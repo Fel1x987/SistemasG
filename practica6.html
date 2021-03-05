@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 6</title>
+    <style>
+        #map {
+            width: 100%;
+        }
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map">
+
+    </div>
+
+    <script>
+        var map;
+        var coords = {
+            lat:0,
+            lng:0
+        };
+
+        var props = {
+            center: coords,
+            zoom: 20
+        }
+        function startMap(){
+            map = new google.maps.Map(document.getElementById("map", props));
+            var iCon = {
+                url: "https://image.flaticon.com/icons/png/128/484/484150.png",
+                scaledSize: new google.maps.Size(50,50),
+                origin: new google.maps.Point(0,0),
+                anchor: new google.maps.Point(0,0)
+            }
+
+            var marker =new google.maps.Marker({
+                position: coords,
+                icon: iCon,
+                map : map
+            });
+
+            if(navigator.geolocation){
+                //setInterval -> LLama una funcion cada x segundos. Es importante
+                setInterval( () => {
+                    move(marker);
+                    console.log("Se acaba de mover a "+ pos.lat + " , " +pos.lng)
+                },2000);
+            }
+
+            function move (marker){
+                navigator.geolocation.getCurrentPosition( position =>{
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    }                    
+                    marker.setPosition(pos);
+                    map.panTo(pos); //MOver a posición
+                    map.setCenter(pos);
+                });
+            }
+        }
+    </script>
+
+
+
+    <!-- Bootstrap 5 beta -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU&callback=startMap" async defer></script>
+</body>
+</html>
