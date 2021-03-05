@@ -34,16 +34,16 @@
         }
         function startMap(){
             map = new google.maps.Map(document.getElementById("map", props));
-            var iCon = {
+            var icono = {
                 url: "https://image.flaticon.com/icons/png/128/484/484150.png",
                 scaledSize: new google.maps.Size(50,50),
                 origin: new google.maps.Point(0,0),
                 anchor: new google.maps.Point(0,0)
             }
 
-            var marker =new google.maps.Marker({
+            var marker = new google.maps.Marker({
                 position: coords,
-                icon: iCon,
+                icon: icono,
                 map : map
             });
 
@@ -52,7 +52,7 @@
                 setInterval( () => {
                     move(marker);
                     console.log("Se acaba de mover")
-                },2000);
+                },3500);
             }
 
             function move (marker){
