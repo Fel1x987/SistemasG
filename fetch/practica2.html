@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container" id="paises">
+        <h1>Practica 2 fetch FMCM</h1>
         <div class="row"> <!--Siempre se pone de esta manera los divs-->
             <div class="col"></div>
         </div>
@@ -20,7 +21,7 @@
                 datos.forEach( registro => {
                     console.log(registro.country);
                     let renglon = document.createElement("div"); //Se esta repitinedo renglon-columna por cada registro
-                    renglon.className = "row border bg-dark"; 
+                    renglon.className = "row border bg-info"; 
                     paises.appendChild(renglon);
 
                     let columna = document.createElement("div"); //
