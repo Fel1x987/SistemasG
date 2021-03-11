@@ -16,7 +16,13 @@
         fetch('datos.json')
         .then(function(response){
             response.json().then(function(datos){ //ya teneemos los datos del archivo
-                console.log(datos);
+                //console.log(datos);
+                datos.forEach(registro => {
+                    //console.log(registro.country);
+                    let nombre = document.createElement("p");
+                    nombre.textContent = "País "+ registro.country + ", casos: " +registro.cases;
+                    paises.appendChild(nombre);
+                });
             });
         });
     </script>
