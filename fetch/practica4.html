@@ -34,7 +34,7 @@
                 const map = new google.maps.Map(document.getElementById('map'), propiedades); //Creo mapa con sus respectivas props
                 //console.log(datos);
                 datos.forEach( marcador => { //Por cada pais encontrado, pone un marcador
-                    fetch('https://corona.lmao.ninja/countries') 
+                    fetch('http://corona.lmao.ninja/docs') 
                     .then(function(respuesta) {  //Llama a la API por cada país. Puede tardar mucho. 
                         respuesta.json().then(function(datospaises) { //Navego a traves del JSON
                             datospaises.forEach(registro => {// Itera datos de los paise                                                     
