@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica de fetch 3</title>
+    <style>
+        #map {
+            width: 100%;
+            height: 100%;
+            /*Estilos del mapa*/
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin :0;
+            padding: 0;;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var coordenadas = { //Propiedades iniciales del mapa, para ponerlas en el centro.
+            lat: 0,
+            lng: 0
+        };
+        var propiedades = {
+            center: coordenadas, //Aqui lo pones en el centro y muy alejado
+            zoom: 2
+        };
+        function obtieneMarcadores(){ //Funcion que simula un JSON que viene de una API
+            const markers = [ //Arreglo de objetos (Paises y sus coordenadas)
+                {
+                    name: "Israel",
+                    longitude: "31.046051",
+                    latitude: "34.851612 "
+                }, {
+                    name: "Tíbet",
+                    longitude: "86.1328100",
+                    latitude: "33.2111200"
+                }, {
+                    name: "Norte de Rusia",
+                    longitude: "82.4533",
+                    latitude: "70.3993"
+                }
+            ];
+            return markers; //Retorna el arreglo
+        };
+        function iniciaMapa(){
+            const map = new google.maps.Map(document.getElementById('map'),propiedades); //Obtiene el ID del div
+            const marcadores = obtieneMarcadores(); //Es autoexplicativo
+            //console.log(marcadores);
+            for(marcador of  marcadores){ //Ciclo for each que itera para que posicione cada maracador 
+                let marker = new google.maps.Marker({ //Declaramos nuevo marcador
+                    map: map, //Poscicion del mapa
+                    position: new google.maps.LatLng(marcador.latitude, marcador.longitude), //POs del maracador
+                    title: marcador.name //Titulo
+                });
+            }
+        };
+    </script>
+    <!--API de google maps-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU&callback=iniciaMapa" async defer></script>
+</body>
+</html>
