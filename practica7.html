@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 7</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+    /*Estilos del mapa*/
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            background-color: rgb(40, 40, 40);
+        }
+        #mapa {
+            width: 100%;
+            height: 600px;
+        } 
+        .caja {
+        margin:20px auto 40px auto;	
+        border:1px solid #d9d9d9;
+        height:30px;
+        overflow: hidden;
+        width: 500px;
+        position:relative;
+        }
+        select {
+        background: transparent;
+        border: none;
+        font-size: 14px;
+        height: 30px;
+        color: white;
+        background-color:  rgb(40, 40, 40);
+        padding: 5px;
+        width: 600px;
+        }
+        select:focus{ outline: none;}
+
+        .caja::after{
+            content:"\025be";
+            display:table-cell;
+            padding-top:7px;
+            text-align:center;
+            width:30px;
+            height:30px;
+            background-color:#d9d9d9;
+            position:absolute;
+            top:0;
+            right:0px;	
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row col-12 text-center">
+                <h1 style="color: blanchedalmond;">Clustering de Félix</h1>
+                <div class="container-fluid caja">
+                    <select id="mySelect" onchange="tipoMapa(value)" class="form-select" aria-label="Default select example">
+                        <option value="road" selected>Roadmap</option>
+                        <option value="sat">Satellite</option>
+                        <option value="hyb">Hybrid</option>
+                        <option value="ter">Terrain</option>
+                      </select>
+                </div>
+                <div class="col-12 text-center">
+                    <div id="mapa"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var coordenadas = {
+            lat: 21.356733769029844, lng: -101.24013100455193
+            }
+        var localidades = [
+            {lat: 21.145300033511948, lng: -101.60514520515643},
+            {lat: 20.95048695660249, lng: -100.96519163711181},
+            {lat: 20.449480573547348, lng: -100.39115598689366},
+            {lat: 19.93908966823028, lng: -101.12723992008667},
+            {lat: 21.467234458231538, lng: -101.20621873225744},
+            {lat: 21.356733769029844, lng: -101.24013100455193},
+            {lat: 21.324428844690544, lng: -101.0428232370242},
+            {lat: 22.68029757042386, lng: -102.60625199418902},
+            {lat: 23.45651092670554, lng: -102.55239984173829},
+            {lat: 23.17627051506263, lng: -99.75657346001972},
+            {lat: 22.09523073086128, lng: -99.40653423024601},
+            {lat: 21.38407467194917, lng: -98.1966615833733},
+            {lat: 20.302042800034567, lng: -97.86457305207706},
+            {lat: 19.506336316119157, lng: -98.46077428092596},
+            {lat: 18.63660893945528, lng: -97.0454955050013},
+            {lat: 17.901364236876915, lng: -96.8741388882714}
+        ];
+            function iniciaMapa() {
+            var map = new google.maps.Map(
+            document.getElementById('mapa'),
+                {
+                    center: coordenadas,
+                    zoom: 3
+                    //mapTypeId: 'terrain' Esto es el tipo de mapa que despliega, sino pongo nada pone el default.
+                }
+            );
+            var x = document.getElementById("mySelect").value;
+            tipoMapa = function(x){
+                console.log(x);
+                switch (x) {
+                    case 'road':
+                        console.log('roadmap');
+                        map.setMapTypeId('roadmap');
+                    break;
+                    case 'sat':
+                    console.log('Sat');
+                        map.setMapTypeId('satellite');
+                    break;
+                    case 'hyb':
+                    console.log('hyb');
+                        map.setMapTypeId('hybrid');
+                    break;
+                    case 'ter':
+                    console.log('Terrain');
+                        map.setMapTypeId('terrain');
+                    break;
+                    default:
+                        //map.setMapTypeId('hybrid');
+                    break;
+                }
+            }
+            var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var marcadores = []; //Arreglo vacio
+            var cuenta = 1;
+
+            localidades.forEach( localidad => { //Se va a generar cada marcador por cada localidad
+                //console.log(localidad);
+                let marcador = new google.maps.Marker({
+                    map : map,
+                    position: localidad,
+                    label: labels[ cuenta % labels.length ] // Solo acepta cadenas de 1 caracter. Esto trae la primera letra (0), luego el B y así sucesivamente
+                });
+                marcadores.push(marcador); //se va ir metiendo todo al arreglo que estaba vacío al principio.
+                cuenta++; //Este numero es para que vayan cambiando las letras en los marcadores.
+            });
+    
+            //Ahora se uniran los markers en el cluster. Pasamos el Path de la imagenes que va a usar y el zoom
+            var makerCluster = new MarkerClusterer(map, marcadores, {
+                imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+                gridSize: 20, 
+                zoomOnClick: true, //Cuando demos click hará un zoom. Aunque esta por default
+                maxZoom: 10
+
+            });            
+            //Funciones que definen el tipo de mapa a mostrar. 
+            /*document.getElementById('btnroadmap').addEventListener('click', function(){
+                map.setMapTypeId('roadmap');
+            });
+
+            document.getElementById('btnsatellite').addEventListener('click', function(){
+                map.setMapTypeId('satellite');
+            });
+
+            document.getElementById('btnhybrid').addEventListener('click', function(){
+                map.setMapTypeId('hybrid');
+            });
+
+            document.getElementById('btnterrain').addEventListener('click', function(){
+                map.setMapTypeId('terrain');
+            });*/
+        }
+    </script>
+    <!--Libererias de j-query, popper bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!--Librerias de google maps y libreria del marketcluster-->
+    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU&callback=iniciaMapa" async defer></script>
+</body>
+</html>

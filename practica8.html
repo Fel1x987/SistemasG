@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 8</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+    /*Estilos del mapa*/
+       html, body {
+            margin: 0px;
+            padding: 0px;
+            background-color: rgb(40, 40, 40);
+        }
+        #mapa {
+            width: 100%;
+            height: 600px;
+        } 
+        .caja {
+        margin:20px auto 40px auto;	
+        border:1px solid #d9d9d9;
+        height:30px;
+        overflow: hidden;
+        width: 500px;
+        position:relative;
+        }
+        select {
+        background: transparent;
+        border: none;
+        font-size: 14px;
+        height: 30px;
+        color: white;
+        background-color:  rgb(40, 40, 40);
+        padding: 5px;
+        width: 600px;
+        }
+        select:focus{ outline: none;}
+
+        .caja::after{
+            content:"\025be";
+            display:table-cell;
+            padding-top:7px;
+            text-align:center;
+            width:30px;
+            height:30px;
+            background-color:#d9d9d9;
+            position:absolute;
+            top:0;
+            right:0px;	
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 text-center">
+                    <h1 style="color: aliceblue;">Idiomas en Maps</h1>                    
+                </div>
+                <div class="col-6 text-center">
+                    <select name="idioma" id="idioma" class="form-control" onchange="this.form.submit()">
+                        <option value="es">Español</option>
+                        <option value="en">Inglés</option>
+                        <option value="it">Italiano</option>
+                        <option value="zh">Chino</option>
+                        <option value="ja">Japonés</option>
+                        <option value="el">Griego</option>
+                        <option value="ar">Árabe</option>
+                        <option value="cmn">Mandarín</option>
+                        <option value="nn">Noruego</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center container">
+                    <div id="mapa"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <script>
+        var coordenadas = {
+            lat: 40, lng: 40
+        }
+        const queryString = window.location.search; //Deluelve la URL que tienes el en nav 
+        const urlParams = new URLSearchParams(queryString); //Divide las variables que paso por la url
+        const idioma = urlParams.get('idioma'); //obetengo la vvar de idioma de la url
+
+        document.getElementById("idioma").value = idioma; // Para que deje seleciconado el idioma en que está.
+
+        var script = document.createElement('script'); //Crea un script dinamico
+
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU&callback=iniciaMapa&language=' +  idioma;
+        document.head.appendChild(script);
+
+        function iniciaMapa() {
+            var map = new google.maps.Map(
+            document.getElementById('mapa'),
+                {
+                    center: coordenadas,
+                    zoom: 5
+                    //mapTypeId: 'terrain' Esto es el tipo de mapa que despliega, sino pongo nada pone el default.
+                }
+            );
+        }
+    </script>
+    <!--Libererias de j-query, popper bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!--Librerias de google maps y libreria del marketcluster-->
+    
+</body>
+</html>
