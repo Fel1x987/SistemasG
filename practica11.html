@@ -1,0 +1,195 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 11</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            background-color: black;
+        }
+        p, h1{
+            color: white;
+        }
+        #map {
+            width: 100%;
+            height: 450px;
+        }
+        .caja {
+        margin:20px auto 40px auto;	
+        border:1px solid #d9d9d9;
+        height:30px;
+        overflow: hidden;
+        width: 500px;
+        position:relative;
+        }
+        select {
+        background: transparent;
+        border: none;
+        font-size: 14px;
+        height: 30px;
+        color: white;
+        background-color:  rgb(40, 40, 40);
+        padding: 5px;
+        width: 600px;
+        }
+        select:focus{ outline: none;}
+        .caja::after{
+            content:"\025be";
+            display:table-cell;
+            padding-top:7px;
+            text-align:center;
+            width:30px;
+            height:30px;
+            background-color:#d9d9d9;
+            position:absolute;
+            top:0;
+            right:0px;	
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid m-2 text-center">
+        <div class="row">
+            <div class="col-12">
+                <h1>Controles de Mapa</h1>
+                <div class="container-fluid caja">
+                    <select id="mySelect" onchange="tipoMapa(value)" class="form-select" aria-label="Default select example">
+                        <option value="E1" selected>Estandar</option>
+                        <option value="S">Sin controles</option>
+                        <option value="Z">Sin zoom</option>
+                        <option value="C">Control Options</option>
+                        <option value="P">Control position</option>
+                        <option value="R">Restricting Map Bounds</option>
+                      </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="map"></div>                
+            </div>            
+        </div>
+    </div>
+    <script>    
+        function iniciaMapa(){
+            
+            var coordenadas = {  lat: 21.478008627467105, lng: -101.2157529262283 };        
+            var propiedades1 = {
+            center: coordenadas,
+            zoom: 12};
+            var map = new google.maps.Map(document.getElementById('map'),propiedades1);
+            var x = document.getElementById("mySelect").value;
+            var propiedades = {};  
+            tipoMapa = function(x){
+                console.log(x);
+                switch (x) {
+                    case 'E1':
+                        console.log('ESTANDAR');
+                        var propiedades1 = {
+                        center: coordenadas,
+                        zoom: 12
+                    };
+                    var map = new google.maps.Map(document.getElementById('map'),propiedades1);
+                    break;
+                    case 'S':
+                        console.log('NO CONTROLS');
+                        propiedades = {
+                            center: coordenadas,
+                            zoom: 12,
+                            disableDefaultUI: true
+                        };
+                        var map = new google.maps.Map(document.getElementById('map'),propiedades);//Mapa sin controles, solo el zoom es posible hacer
+                    break;
+                    case 'Z':
+                        console.log('NO ZOOM');
+                        propiedades = {
+                        center: coordenadas,
+                        zoom: 11.5,
+                        zoomControl: false, //Obviamente bloquea el zoom
+                        scaleControl: true // Activa el escalamiento del mapa
+                    };
+                    var map = new google.maps.Map(document.getElementById('map'),propiedades); //Mapa sin zoom. 
+                    break; 
+                    case 'C':
+                    console.log('CONTROL OPTIONS');
+                        propiedades = {
+                        center: coordenadas,
+                        zoom: 12,
+                        mapTypeControl: true, //Hay que activarla 
+                        mapTypeControlOptions : {
+                        style : google.maps.MapTypeControlStyle.HORIZONTAL_BAR, //DROPDOWN_MENU
+                        mapTypeIds : [ 'roadmap', 'satellite', 'terrain', 'hybrid']
+                        }
+                    };
+                    var map = new google.maps.Map(document.getElementById('map'),propiedades);//Me deja elegir entre las opciones de mapas, como en la practica 7
+                    break; 
+                    case 'P':
+                        console.log('CONTROL POSITION');
+                        propiedades = {
+                        center: coordenadas,
+                        zoom: 12,
+                        mapTypeControl: true,
+                        mapTypeControlOptions : {
+                            style : google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                            position : google.maps.ControlPosition.TOP_RIGHT
+                        },
+                        zoomControl : true,
+                        zoomControlOptions : {
+                        position : google.maps.ControlPosition.RIGHT_CENTER
+                        },
+                        scaleControl : true,
+                        streetViewControl: true,
+                        streetViewControlOptions : {
+                        position : google.maps.ControlPosition.RIGHT_BOTTOM
+                    },
+                    fullscreenControl : true
+                    /* 
+                    BOTTOM_CENTER	Elements are positioned in the center of the bottom row.
+                    BOTTOM_LEFT	Elements are positioned in the bottom left and flow towards the middle. Elements are positioned to the right of the Google logo.
+                    BOTTOM_RIGHT	Elements are positioned in the bottom right and flow towards the middle. Elements are positioned to the left of the copyrights.
+                    LEFT_BOTTOM	Elements are positioned on the left, above bottom-left elements, and flow upwards.
+                    LEFT_CENTER	Elements are positioned in the center of the left side.
+                    LEFT_TOP	Elements are positioned on the left, below top-left elements, and flow downwards.
+                    RIGHT_BOTTOM	Elements are positioned on the right, above bottom-right elements, and flow upwards.
+                    RIGHT_CENTER	Elements are positioned in the center of the right side.
+                    RIGHT_TOP	Elements are positioned on the right, below top-right elements, and flow downwards.
+                    TOP_CENTER	Elements are positioned in the center of the top row.
+                    TOP_LEFT	Elements are positioned in the top left and flow towards the middle.
+                    TOP_RIGHT	Elements are positioned in the top right and flow towards the middle.
+                    */
+                    };
+                    var map = new google.maps.Map(document.getElementById('map'),propiedades);
+                    break; 
+                    case 'R':
+                        var coordenada = {  lat: 21.152639, lng:  -101.711598 };
+                        var limites = {
+                        north: 21.390039,
+                        south: 20.858414,
+                        west: -102.149631,
+                        east:  -101.092990
+                    }
+                        console.log('RESTRIC MAP BOUNDS');
+                        var propiedades6 = {
+                        center: coordenada,
+                        zoom: 10,
+                        restriction: {
+                            latLngBounds : limites,
+                            strictBounds : false
+                        }
+                    };                    
+                    var map = new google.maps.Map(document.getElementById('map'),propiedades6);
+                    break; 
+                }
+            }                                                                                                                                
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU&callback=iniciaMapa" async defer></script>
+</body>
+</html>
