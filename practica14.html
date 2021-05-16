@@ -38,7 +38,7 @@
             var cord = {lat: 21.152639, lng: -101.711588}
             var props = {
                 center: cord,
-                zoom: 6,
+                zoom: 4,
                 mapTypeId: 'terrain'
             };
             map = new google.maps.Map(document.getElementById("map"), props);            
@@ -93,7 +93,7 @@
                    trazo.setMap(map);
                    html += `</tbody>
                             </table>`;
-                    datos.innerHTML = tabla;
+                    datos.innerHTML = html;
                 });
             }); //Comunicacion con cualquier API en el mundo
         }
