@@ -1,0 +1,56 @@
+[
+    {
+        "nombre": "Celaya",
+        "estado": "Guanajuato",
+        "coordenadas": {
+            "lat": 20.530103840064395,
+            "lng": -100.81627802047046
+        },
+        "habitantes": 521169
+    },
+    {
+        "nombre": "Tijuana",
+        "estado": "Baja California",
+        "coordenadas": {
+            "lat": 32.53389004023987,
+            "lng":  -117.02885813621093
+        },
+        "habitantes": 2157853
+    },
+    {
+        "nombre": "Ciudad Obregón",
+        "estado": "Sonora",
+        "coordenadas": {
+            "lat": 27.484593305255125,
+            "lng":  -109.93572243292174
+        },
+        "habitantes": 433050
+    },
+    {
+        "nombre": "Irapuato",
+        "estado": "Guanajuato",
+        "coordenadas": {
+            "lat": 20.677814972759222, 
+            "lng": -101.35261847637801
+        },
+        "habitantes": 574344 
+    },
+    {
+        "nombre": "Ciudad Juárez",
+        "estado": "Chihuahua",
+        "coordenadas": {
+            "lat": 31.72232904348514,
+            "lng":  -106.43176962413885
+        },
+        "habitantes": 1501551
+    },
+    {
+        "nombre": "Ensenada",
+        "estado": "Baja California",
+        "coordenadas": {
+            "lat": 31.869679712955254,
+            "lng":  -116.59412381182207
+        },
+        "habitantes": 443807
+    }
+]
