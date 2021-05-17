@@ -5,7 +5,7 @@ formaingresar.addEventListener('submit', (e) =>{
     let contrasena = formaingresar['contrasena'].value;
 
     auth.signInWithEmailAndPassword(correo, contrasena).then(cred =>{
-        //console.log("Entro (y)");
+        console.log("Entro (y)");
         $('#ingresarmodal').modal('hide');
         formaingresar.reset();
         formaingresar.querySelector('.error').innerHTML='';
