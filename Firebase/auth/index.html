@@ -5,13 +5,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Felix Y Asociados</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Felix Y Asociados</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" id="salir" href="#">Sign Out</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#ingresarmodal">Sign In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#" data-toggle="modal" data-target="#registermodal">Register</a>
+              </li>
+            </ul> 
+          </div>
+        </div>
+      </nav>
     
+  <!-- Modal INGRESAR -->
+<div class="modal fade" id="ingresarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formaingresar">
+            <div class="row">
+                <div class="col-12 m-2">
+                    <input type="email" required class="form-control" placeholder="Ingresa tu correo" id="correo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 m-2">
+                    <input type="password" required class="form-control" placeholder="Ingresa tu contraseña" id="contrasena">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary">Sign In</button>
+                    <p class="error text-danger"></p>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Modal Regiser -->
+<div class="modal fade" id="registermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formaregistrate">
+            <div class="row">
+                <div class="col-12 m-2">
+                    <input type="email" required class="form-control" placeholder="Ingresa tu correo" id="rcorreo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 m-2">
+                    <input type="password" required class="form-control" placeholder="Ingresa tu contraseña" id="rcontrasena">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary">Register</button>
+                    <p class="error text-danger"></p>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal MyAccount -->
+<div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Account</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Info de cuenta
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+      <div class="row text-center" id="listadeplatillos">
+          <div class="col-12 col-md-4">
+              <img src="images/sopa.jpg" alt="Maruchan">
+              <p>Le Sope da Maruchan</p>
+          </div>
+          <div class="col-12 col-md-4">
+            <img src="images/bolillo.jpg" alt="Bolillo">
+            <p>Le Sope da Maruchan</p>
+        </div>
+        <div class="col-12 col-md-4">
+            <img src="images/vaso.jpg" alt="Horchata">
+            <p>Le Sope da Maruchan</p>
+        </div>
+      </div>
+  </div>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>    
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>    
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -24,6 +162,11 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  const db = firebase.firestore();
 </script>
+<script src="scripts/autorizacion.js" ></script>
+<script src="scripts/index.js" ></script>
 </body>
 </html>
