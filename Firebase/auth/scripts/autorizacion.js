@@ -1,10 +1,10 @@
 auth.onAuthStateChanged(user =>{
-    console.log(user + " onAuthStateChanged");
+    console.log(user);
     if(user){    
         db.collection('platillos').onSnapshot(snapshot =>{
-            obtienePlatillos(snapshot.docs);
-            configurarMenu(user);
+            obtienePlatillos(snapshot.docs);            
         });        
+        configurarMenu(user);
     } else {
         obtienePlatillos([]);
         configurarMenu();
@@ -23,7 +23,7 @@ formaingresar.addEventListener('submit', (e) =>{
         formaingresar.querySelector('.error').innerHTML='';
     }).catch(err =>{
         console.log(err);
-        formaingresar.querySelector('.error').innerHTML=messageError(err.code);
+        formaingresar.querySelector('.error').innerHTML = messageError(err.code);
     });
 });
 
@@ -62,7 +62,7 @@ formaregistrate.addEventListener('submit', (e)=>{
 
     auth.createUserWithEmailAndPassword(correo, contrasena).then(cred => {
         console.log("Se creo el usuario " + correo);   
-        return db.collection('usuario').doc(cred.user.uid).set({
+        return db.collection('usuarios').doc(cred.user.uid).set({
             nombre : formaregistrate['rnombre'].value,
             telefono : formaregistrate['rtelefono'].value,
             direccion : formaregistrate['rdireccion'].value

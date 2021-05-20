@@ -1,6 +1,6 @@
 const listaloggedout = document.querySelectorAll('.loged-out');
 const listaloggedin = document.querySelectorAll('.loged-in');
-const datosdelacuenta = document.querySelector('datosdelacuenta');
+const datosdelacuenta = document.querySelector('.datosdelacuenta');
 
 const configurarMenu = (user) => {
     if (user) {
@@ -24,7 +24,7 @@ const obtienePlatillos = (data) => {
     if (data.length) {
         let html = '';
         data.forEach(doc => {            
-            const platillo = doc.data;
+            const platillo = doc.data();
             const columna = `
             <div class="col-12 col-md-4">
                 <img src="images/${platillo.imagen}" alt="${platillo.nombre}">
