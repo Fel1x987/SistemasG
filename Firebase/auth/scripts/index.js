@@ -31,7 +31,7 @@ const obtienePlatillos = (data) => {
             const columna = `
             <div class="col-12 col-md-4">
                 <img src="images/${platillo.imagen}" alt="${platillo.nombre}">
-                <p>${platillo.nombre}</p>
+                <p style="color: white;">${platillo.nombre}</p>
                 <p class="text-danger">$ ${platillo.precio}</p>
                 <a href="https://www.paypal.me/felixcardenas987/${platillo.precio}" target="_blank">
                     <button class="btn btn-primary"> Pagar AHORA!</button>
