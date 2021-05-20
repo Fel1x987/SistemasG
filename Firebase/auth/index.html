@@ -13,27 +13,32 @@
         img {
             width: 100%;
         }
+        .logged-in, .logged-out{
+          display: none;
+        }
     </style>
 </head>
 <body class="bg-light">
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Felix Y Asociados</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
+              <li class="nav-item logged-in">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item logged-in">
                 <a class="nav-link" aria-current="page" id="salir" href="#">Sign Out</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item logged-out">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#ingresarmodal">Sign In</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item logged-out">
                 <a class="nav-link" aria-current="page" href="#" data-toggle="modal" data-target="#registermodal">Register</a>
               </li>
             </ul> 
@@ -68,6 +73,11 @@
                 </div>
             </div>
           </form>
+          <div class="row">
+            <div class="col-12 text-center">
+              <span onclick="entrarGoogle()" class="btn btn-danger">Ingresa con Gmail!</span>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
@@ -87,6 +97,11 @@
         <div class="modal-body">
           <form id="formaregistrate">
             <div class="row">
+              <div class="col-12 m-2">
+                  <input type="text" required class="form-control" placeholder="Ingresa tu nombre" id="rnombre">
+              </div>
+          </div>
+            <div class="row">
                 <div class="col-12 m-2">
                     <input type="email" required class="form-control" placeholder="Ingresa tu correo" id="rcorreo">
                 </div>
@@ -97,8 +112,18 @@
                 </div>
             </div>
             <div class="row">
+              <div class="col-12 m-2">
+                  <input type="number" required class="form-control" placeholder="Ingresa tu numero" step="any" id="rtelefono">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 m-2">
+                  <input type="text" required class="form-control" placeholder="Ingresa tu direccion" id="rdireccion">
+              </div>
+          </div>
+            <div class="row">
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary">Register</button>
+                    <input type="submit" value="Registrarse" class="btn btn-primary">Register</input>                    
                     <p class="error text-danger"></p>
                 </div>
             </div>
@@ -119,8 +144,8 @@
           <h5 class="modal-title" id="exampleModalLabel">Account</h5>
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          Info de cuenta
+        <div class="modal-body datosdelacuenta">
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
@@ -131,18 +156,7 @@
 
   <div class="container">
       <div class="row text-center" id="listadeplatillos">
-          <div class="col-12 col-md-4">
-              <img src="images/sopa.jpg" alt="Maruchan">
-              <p>Le Sope da Maruchan</p>
-          </div>
-          <div class="col-12 col-md-4">
-            <img src="images/bolillo.jpg" alt="Bolillo">
-            <p>Pan Europeo fino</p>
-        </div>
-        <div class="col-12 col-md-4">
-            <img src="images/vaso.jpg" alt="Horchata">
-            <p>Agua de rio con cloro</p>
-        </div>
+          
       </div>
   </div>
 
