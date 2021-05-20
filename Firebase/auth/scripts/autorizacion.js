@@ -3,9 +3,8 @@ auth.onAuthStateChanged(user =>{
     if(user){    
         db.collection('platillos').onSnapshot(snapshot =>{
             obtienePlatillos(snapshot.docs);
-        });
-        configurarMenu(user);
-
+            configurarMenu(user);
+        });        
     } else {
         obtienePlatillos([]);
         configurarMenu();
