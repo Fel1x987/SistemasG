@@ -1,7 +1,7 @@
 auth.onAuthStateChanged(user =>{
     console.log(user + " onAuthStateChanged");
     if(user){    
-        db.collection('platillos').onSnapShot(snapshot =>{
+        db.collection('platillos').onSnapshot(snapshot =>{
             obtienePlatillos(snapshot.docs);
         });
         configurarMenu(user);
