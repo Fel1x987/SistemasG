@@ -48,12 +48,12 @@ function messageError(codigo){
 const salir = document.getElementById("salir");
 salir.addEventListener('click', (e) =>{
     e.preventDefault();
-    auth.signOut().then( ()=>{
+    auth.signOut().then(() => {
         alert('Se ha cerrado sesión');
     });
 });
 
-const formaregistrate = document.getElementById("formaregistrate");
+const formaregistrate = document.getElementById("formaregistrar");
 
 formaregistrate.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -68,7 +68,7 @@ formaregistrate.addEventListener('submit', (e)=>{
             direccion : formaregistrate['rdireccion'].value
         });//A la coleccion de user, con esa id recien creado, se hara un set para que cree el docuemnt
     }).then(()=>{
-        $('#registermodal').modal('hide');
+        $('#registrarmodal').modal('hide');
         formaregistrate.reset();
         formaregistrate.querySelector('.error').innerHTML = '';
     }).catch(err =>{        
@@ -78,15 +78,15 @@ formaregistrate.addEventListener('submit', (e)=>{
 
 entrarGoogle = () =>{
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result){
+    firebase.auth().signInWithPopup(provider).then(function (result) {
         var token = result.credential.accessToken;
         console.log(token);
 
         var user = result.user;
         let html = `
         <p>Nombre: ${user.displayName}</p>
-        <p>Correp: ${user.email}</p>
-        <img src="${user.displayName}"></img>
+        <p>Correo: ${user.email}</p>
+        <img src="${user.photoURL}"></img>
         `;
 
         datosdelacuenta.innerHTML = html;

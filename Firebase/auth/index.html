@@ -28,39 +28,36 @@
 </head>
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Felix Y Asociados</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Felix Y Asociados</a>        
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item logged-in">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
+              <li class="nav-item">
+                <a class="nav-link logged-in" href="#" data-toggle="modal" data-target="#micuenta">Cuenta</a>
               </li>
-              <li class="nav-item logged-in">
-                <a class="nav-link" aria-current="page" id="salir" href="#">Sign Out</a>
+              <li class="nav-item">
+                <a class="nav-link micuenta"id="salir" href="#">Salir</a>
               </li>
-              <li class="nav-item logged-out">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#ingresarmodal">Sign In</a>
+              <li class="nav-item">
+                <a class="nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
               </li>
-              <li class="nav-item logged-out">
-                <a class="nav-link" aria-current="page" href="#" data-toggle="modal" data-target="#registermodal">Register</a>
+              <li class="nav-item">
+                <a class="nav-link logged-out" href="#" data-toggle="modal" data-target="#registrarmodal">Register</a>
               </li>
             </ul> 
           </div>
-        </div>
       </nav>
-    
   <!-- Modal INGRESAR -->
 <div class="modal fade" id="ingresarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="exampleModalLabel">Ingresar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
           <form id="formaingresar">
@@ -76,7 +73,7 @@
             </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary">Sign In</button>
+                    <button class="btn btn-primary">Ingresar</button>
                     <p class="error text-danger"></p>
                 </div>
             </div>
@@ -95,15 +92,15 @@
   </div>
 
   <!-- Modal Regiser -->
-<div class="modal fade" id="registermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="registrarmodal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Register</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="exampleModalLabel">Registrar</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
-          <form id="formaregistrate">
+          <form id="formaregistrar">
             <div class="row">
               <div class="col-12 m-2">
                   <input type="text" required class="form-control" placeholder="Ingresa tu nombre" id="rnombre">
@@ -145,15 +142,15 @@
   </div>
 
   <!-- Modal MyAccount -->
-<div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="micuenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Account</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="exampleModalLabel">Cuenta</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
         </div>
-        <div class="modal-body datosdelacuenta">
-          
+        <div class="modal-body">
+          <div class="modal-body datosdelacuenta"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
@@ -162,7 +159,8 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container my-5">
+      <h2>PLatillos:</h2>
       <div class="row text-center" id="listadeplatillos">
           
       </div>
@@ -171,7 +169,7 @@
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>    
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>   
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -184,8 +182,8 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
 
+  const auth = firebase.auth();
   const db = firebase.firestore();
 </script>
 <script src="scripts/autorizacion.js" ></script>
