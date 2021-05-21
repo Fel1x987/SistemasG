@@ -41,6 +41,6 @@ const obtienePlatillos = (data) => {
         });
         listadeplatillos.innerHTML = html;
     } else {
-        listadeplatillos.innerHTML= '<p class="text-center">Ingrese para ver los elementos uwu</p>';
+        listadeplatillos.innerHTML= '<p style="color: white" class="text-center">Ingrese para ver los elementos uwu</p>';
     }
 };
