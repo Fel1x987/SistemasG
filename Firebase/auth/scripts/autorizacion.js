@@ -84,8 +84,8 @@ entrarGoogle = () =>{
 
         var user = result.user;
         let html = `
-        <p style = "color: white">Nombre: ${user.displayName}</p>
-        <p style = "color: white">Correo: ${user.email}</p>
+        <p style="color: white;">Nombre: ${user.displayName}</p>
+        <p style="color: white;">Correo: ${user.email}</p>
         <img src="${user.photoURL}"></img>
         `;
 
