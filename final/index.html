@@ -21,7 +21,7 @@
         }
         </style>
 </head>
-<body>
+<body onload="getLoc()">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6">
@@ -34,11 +34,19 @@
         </div>
     </div>
     <script>
-        function iniciaMapa() {
-            var cord = {lat: 21.152639, lng: -101.711588}
+        function getLoc(){
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(iniciaMapa);
+            } else{
+                mapa.innerHTML= "Favor de dar permiso de usar GPS";
+            }
+        }
+
+        function iniciaMapa(posicion) {
+            var cord = {lat: posicion.coords.latitude, lng: posicion.coords.longitude}
             var props = {
                 center: cord,
-                zoom: 4,
+                zoom: 3,
                 mapTypeId: 'terrain'
             };
             var map = new google.maps.Map(document.getElementById("map"), props);            
