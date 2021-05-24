@@ -1,0 +1,47 @@
+[
+    {
+        "nombre": "Bora Bora",
+        "estado": "Polinesia Francesa",
+        "coordenadas": {
+            "lat": -16.5019899506349, 
+            "lng": -151.73753847679552
+        },
+        "habitantes": 521169
+    },
+    {
+        "nombre": "Zante",
+        "estado": "Grecia",
+        "coordenadas": {
+            "lat": 37.7787147765343,
+            "lng": 20.897721400021837
+        },
+        "habitantes": 2157853
+    },
+    {
+        "nombre": "Anse Source d'Argent",
+        "estado": "Seychelles",
+        "coordenadas": {
+            "lat": -4.372773488594641, 
+            "lng":  55.83074973736772
+        },
+        "habitantes": 433050
+    },
+    {
+        "nombre": " Whiteheaven Beach",
+        "estado": "Australia",
+        "coordenadas": {
+            "lat": -20.282770509045726,
+            "lng":  149.04005600113038
+        },
+        "habitantes": 574344 
+    },
+    {
+        "nombre": "Tulum",
+        "estado": "México",
+        "coordenadas": {
+            "lat": 20.20671025769603, 
+            "lng":  -87.43000048975833
+        },
+        "habitantes": 1501551
+    }
+]
