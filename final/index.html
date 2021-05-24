@@ -166,7 +166,7 @@
   <div class="container my-5">
       <h2 style="color: white;" ></h2>
       <div class="row text-center" id="listadeplatillos">
-          
+        <p id="mapa"></p>
       </div>
   </div>
 
@@ -190,7 +190,23 @@
   const auth = firebase.auth();
   const db = firebase.firestore();
 </script>
+<script>
+  var mapa = document.getElementById("mapa");
+  function getLoc(){
+      if(navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else{
+          mapa.innerHTML= "No jaló :(";
+      }
+  }
+
+  function showPosition(posicion){
+      console.log(posicion);
+      mapa.innerHTML = "lat : " + posicion.coords.latitude + "<br>" + "Longitud " + posicion.coords.longitude;
+  }
+</script>
 <script src="scripts/autorizacion.js" ></script>
 <script src="scripts/index.js" ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU&callback=iniciaMapa" async defer></script>
 </body>
 </html>

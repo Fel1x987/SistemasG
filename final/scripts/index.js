@@ -42,6 +42,6 @@ const obtienePlatillos = (data) => {
         });
         listadeplatillos.innerHTML = html;
     } else {
-        $('#ingresarmodal').modal('show');
+        listadeplatillos.innerHTML= '<p style="color: white" class="text-center">Favor de Iniciar sesión</p>';
     }
 };
