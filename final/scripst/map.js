@@ -41,9 +41,9 @@ fetch('locations.json')
             <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                <th scope="col">Municipio</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Habitantes</th>                            
+                <th scope="col">Ciudad</th>
+                <th scope="col">País</th>
+                <th scope="col">Visitantes/año</th>                            
                 </tr>
             </thead>
             <tbody>                        
@@ -68,18 +68,18 @@ fetch('locations.json')
             <td>${municipio.habitantes}</td>                        
             </tr>
             `;       
-       });
-       //console.log(coordlines);
-       var trazo = new google.maps.Polyline({
+        });
+        //console.log(coordlines);
+        var trazo = new google.maps.Polyline({
             path: coordlines,
             strokeColor: '#FF0000',
             strokeOpacity: 1,
             strokeWeight: 1,
             geodesic:true
-       });
+        });
 
-       trazo.setMap(map);
-       html += `</tbody>
+        trazo.setMap(map);
+        html += `</tbody>
                 </table>`;
         datos.innerHTML = html;
     });
