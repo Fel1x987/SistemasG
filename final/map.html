@@ -10,7 +10,7 @@
     <style>
 
         body {
-            background-color:cyan;
+            background-color:wheat;
         }
         #map {
             width: 100%;
@@ -28,43 +28,11 @@
             </div>
         </div>
     </div>
-    <script>
-        var informacion =  "<h1>Usted está aquí</h1>"        
-        function iniciaMapa() {
-            if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition( position => {
-                    var posicion = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    }   
-                    var propiedades = {
-                        center: {
-                            lat: position.coords.latitude, lng: position.coords.longitude
-                        },
-                        zoom: 9
-                    };              
-                    const mapa = document.getElementById("map")
-                    const map = new google.maps.Map(mapa,propiedades)                        
-                    let propiedadesMarcador = {
-                        position: posicion,
-                        map,
-                        title: "Marcardor"
-                    }
-                    const marcador = new google.maps.Marker(propiedadesMarcador);
-                    map.setCenter(posicion)
-                    const infowindow = new google.maps.InfoWindow({
-                        content : informacion
-                    })
-                    marcador.addListener("click", ()=>{
-                        infowindow.open(map,marcador);
-                    })
-                })                      
-            }                                  
-        }
-    </script>
     <!-- Bootstrap 5 beta -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <!-- Google Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU&callback=iniciaMapa" async defer></script>
+
+    <script src="/final/scripst/map.js"></script>
 </body>
 </html>

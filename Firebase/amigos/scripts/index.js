@@ -38,7 +38,7 @@ const obtieneAmigos = (data) => {
 
     data.forEach(doc => {
         informacion = new google.maps.InfoWindow;
-        let posicion = {
+        let posicion = {    
             lat: position.coords.latitude,
             lng: position.coords.longitude
         }
