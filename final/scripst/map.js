@@ -13,7 +13,7 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>"
             },
             zoom: 9
             };                          
-            var map = new google.maps.Map(document.getElementById("map"), props); 
+            var map = new google.maps.Map(document.getElementById("map"), propiedades); 
             //const map = new google.maps.Map(map,propiedades)                        
             let propiedadesMarcador = {
                 position: posicion,
