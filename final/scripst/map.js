@@ -1,4 +1,4 @@
-const mapa = document.getElementById("map");
+const map = document.getElementById("map");
 
 const cargarMapa = () => {
 var informacion =  "<h2>Aquí comienza su aventura!</h2>"        
@@ -14,7 +14,7 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>"
             },
             zoom: 9
             };                          
-            const map = new google.maps.Map(mapa,propiedades)                        
+            const map = new google.maps.Map(map,propiedades)                        
             let propiedadesMarcador = {
                 position: posicion,
                 map,
@@ -25,7 +25,8 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>"
                 const infowindow = new google.maps.InfoWindow({
                     content : informacion
                 })
-                marcador.addListener("click", ()=>{                        infowindow.open(map,marcador);
+                marcador.addListener("click", ()=>{                        
+                    infowindow.open(map,marcador);
             })
         })                                                             
     }
@@ -57,7 +58,7 @@ fetch('locations.json')
             strokeWeight: 2,
             fillColor: '#FF0000',
             fillOpacity: 0.35,
-            mapa: mapa,
+            map: map,
             center : municipio.coordenadas,
             radius : Math.sqrt(municipio.habitantes) * 40
             });
@@ -75,10 +76,10 @@ fetch('locations.json')
             strokeColor: '#FF0000',
             strokeOpacity: 1,
             strokeWeight: 1,
-            geodesic:true
+            geodesic:true            
         });
 
-        trazo.setMap(mapa);
+        trazo.setMap(map);
         html += `</tbody>
                 </table>`;
         datos.innerHTML = html;
