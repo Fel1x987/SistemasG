@@ -31,6 +31,7 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>";
                             <tbody>                        
                             `;
                             var coordlines = [];
+                            coordlines.push(posicion);
                         municipios.forEach(municipio => {
                             coordlines.push(municipio.coordenadas);
                             var circle = new google.maps.Circle({
@@ -49,20 +50,7 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>";
                             <td>${municipio.estado}</td>
                             <td>${municipio.habitantes}</td>                        
                             </tr>
-                            `;
-                            let mark = {
-                                position: municipio.coordenadas,
-                                map,
-                                title: municipio.nombre
-                            }       
-                            let markPoint = new google.maps.Marker(mark);  
-                            map.setCenter(mark.position)
-                            let infowindow2 = new google.maps.InfoWindow({
-                            content : municipio.nombre
-                            })
-                            marcador2.addListener("click", ()=>{
-                                infowindow2.open(map,markPoint);
-                            })                         
+                            `;                                                
                         });
                         console.log(coordlines);
                         var trazo = new google.maps.Polyline({
