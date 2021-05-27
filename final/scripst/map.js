@@ -1,4 +1,4 @@
-const map = document.getElementById("map");
+//const map = document.getElementById("map");
 
 const cargarMapa = () => {
 var informacion =  "<h2>Aquí comienza su aventura!</h2>"        
