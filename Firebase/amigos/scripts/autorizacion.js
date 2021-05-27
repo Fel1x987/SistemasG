@@ -1,12 +1,22 @@
 auth.onAuthStateChanged(user =>{
     console.log(user);
     if(user){    
-        db.collection('platillos').onSnapshot(snapshot =>{
-            obtienePlatillos(snapshot.docs);            
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(position => {
+                db.collection('usuarios').doc(user.uid).update({
+                    coordenadas : {
+                        latitude : position.coords.latitude,
+                        longitude : position.coords.longitude
+                    }
+                });
+            });
+        }
+        db.collection('usuarios').onSnapshot(snapshot =>{
+            obtieneAmigos(snapshot.docs);            
         });        
         configurarMenu(user);
     } else {
-        obtienePlatillos([]);
+        obtieneAmigos([]);
         configurarMenu();
     }
 });
@@ -97,9 +107,4 @@ entrarGoogle = () =>{
     }).catch(function(error){
         console.log("Error " + error)
     });
-}
-
-function showSign(){ 
-    //formaingresar.show();
-    $('#ingresarmodal').modal('show');
 }
