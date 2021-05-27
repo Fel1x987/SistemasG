@@ -35,15 +35,27 @@ const obtieneAmigos = (data) => {
     var mapa = document.getElementById("map")
     var map = new google.maps.Map(mapa,propiedades);
 
+
     data.forEach(doc => {
         informacion = new google.maps.InfoWindow;
+        let posicion = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        }
+        informacion.setPosition(posicion);
+        informacion.setContent(doc.data().nombre);
+        informacion.open(map);
+    });
+    /*data.forEach( doc => {
+        informacion = new google.maps.InfoWindow;
         var pos = { 
-            lat: doc.coordenadas.latitude,
-            lng: doc.coordenadas.longitude
+            lat: doc.data().coordenadas.latitude,
+            lng: doc.data().coordenadas.longitude
         };
         informacion.setPosition(pos);
         informacion.setContent(doc.data().nombre);
         informacion.open(map);
-    });
+
+    });*/
 
 };
