@@ -25,14 +25,14 @@ const configurarMenu = (user) => {
 
 
 const obtieneAmigos = (data) => {
+    var mapa = document.querySelector("#map");
     console.log(data);
     var propiedades = {
         center: {
             lat: 21.4787645, lng: -101.2159166
         },
         zoom: 14
-    };
-    var mapa = document.getElementById("map")
+    }
     var map = new google.maps.Map(mapa,propiedades);
 
 
