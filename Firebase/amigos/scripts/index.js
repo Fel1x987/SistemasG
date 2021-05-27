@@ -24,8 +24,8 @@ const configurarMenu = (user) => {
 };
 
 
-const obtieneAmigos = (doc) => {
-    console.log(doc);
+const obtieneAmigos = (data) => {
+    console.log(data);
     var propiedades = {
         center: {
             lat: 21.4787645, lng: -101.2159166
@@ -35,7 +35,7 @@ const obtieneAmigos = (doc) => {
     var mapa = document.getElementById("map")
     var map = new google.maps.Map(mapa,propiedades);
 
-    doc.forEach(doc => {
+    data.forEach(doc => {
         informacion = new google.maps.InfoWindow;
         var pos = { 
             lat: doc.data().coordenadas.latitude,
