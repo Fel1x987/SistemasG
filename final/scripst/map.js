@@ -78,7 +78,7 @@ fetch('locations.json')
             geodesic:true
         });
 
-        trazo.setMap(map);
+        trazo.setMap(mapa);
         html += `</tbody>
                 </table>`;
         datos.innerHTML = html;
