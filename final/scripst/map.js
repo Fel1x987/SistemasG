@@ -69,7 +69,7 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>";
                 });                
             var map = new google.maps.Map(document.getElementById("map"), propiedades); 
             //const map = new google.maps.Map(map,propiedades)                        
-            /*let propiedadesMarcador = {
+            let propiedadesMarcador = {
                 position: posicion,
                 map,
                 title: "Marcardor"
@@ -81,7 +81,7 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>";
                 })
                 marcador.addListener("click", ()=>{                        
                     infowindow.open(map,marcador);
-            })*/
+            })
         })                                                             
     }
 }
