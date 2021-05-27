@@ -49,7 +49,20 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>";
                             <td>${municipio.estado}</td>
                             <td>${municipio.habitantes}</td>                        
                             </tr>
-                            `;       
+                            `;
+                            let mark = {
+                                position: municipio.coordenadas,
+                                map,
+                                title: municipio.nombre
+                            }       
+                            let markPoint = new google.maps.Marker(mark);  
+                            map.setCenter(mark.position)
+                            let infowindow2 = new google.maps.InfoWindow({
+                            content : municipio.nombre
+                            })
+                            marcador2.addListener("click", ()=>{
+                                infowindow2.open(map,markPoint);
+                            })                         
                         });
                         console.log(coordlines);
                         var trazo = new google.maps.Polyline({
@@ -63,20 +76,7 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>";
                         trazo.setMap(map);
                         html += `</tbody>
                                 </table>`;
-                        datos.innerHTML = html;
-                        let propiedadesMarcador = {
-                            position: posicion,
-                            map,
-                            title: "Marcardor"
-                            }
-                            const marcador = new google.maps.Marker(propiedadesMarcador);
-                            map.setCenter(posicion)
-                            const infowindow = new google.maps.InfoWindow({
-                                content : informacion
-                            })
-                            marcador.addListener("click", ()=>{                        
-                                infowindow.open(map,marcador);
-                        })
+                        datos.innerHTML = html;                                         
                     });
                 });                
             var map = new google.maps.Map(document.getElementById("map"), propiedades); 
