@@ -36,12 +36,12 @@
     <script>
         function iniciaMapa() {
             var cord = {lat: 21.152639, lng: -101.711588}
-            var props = {
+            var propiedades = {
                 center: cord,
                 zoom: 4,
                 mapTypeId: 'terrain'
             };
-            var map = new google.maps.Map(document.getElementById("map"), props);            
+            var map = new google.maps.Map(document.getElementById("map"), propiedades);            
             //Usar json validator
             //fetch solo jala en HTTPS (en seguros)
             fetch('municipios.json')
