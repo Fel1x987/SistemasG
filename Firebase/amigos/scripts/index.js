@@ -33,7 +33,7 @@ const obtieneAmigos = (data) => {
         zoom: 14
     };
     var mapa = document.getElementById("map")
-    var map = new google.maps.Map(mapa,propiedades)
+    var map = new google.maps.Map(mapa,propiedades);
 
     data.forEach(doc => {
         informacion = new google.maps.InfoWindow;
