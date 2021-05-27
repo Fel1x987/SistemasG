@@ -57,7 +57,7 @@ fetch('locations.json')
             strokeWeight: 2,
             fillColor: '#FF0000',
             fillOpacity: 0.35,
-            map: map,
+            mapa: mapa,
             center : municipio.coordenadas,
             radius : Math.sqrt(municipio.habitantes) * 40
             });
