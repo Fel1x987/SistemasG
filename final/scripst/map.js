@@ -1,3 +1,5 @@
+const mapa = document.getElementById("map");
+
 const cargarMapa = () => {
 var informacion =  "<h2>Aquí comienza su aventura!</h2>"        
     if(navigator.geolocation){
@@ -11,8 +13,7 @@ var informacion =  "<h2>Aquí comienza su aventura!</h2>"
             lat: position.coords.latitude, lng: position.coords.longitude
             },
             zoom: 9
-            };              
-            const mapa = document.getElementById("map")
+            };                          
             const map = new google.maps.Map(mapa,propiedades)                        
             let propiedadesMarcador = {
                 position: posicion,
