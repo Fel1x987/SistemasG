@@ -14,17 +14,50 @@
             width: 100%;
             height: 340px;
         }
+        .caja {
+        margin:20px auto 40px auto;	
+        border:1px solid #d9d9d9;
+        height:30px;
+        overflow: hidden;
+        width: 500px;
+        position:relative;
+        }
+        select {
+        background: transparent;
+        border: none;
+        font-size: 14px;
+        height: 30px;
+        color: white;
+        background-color:  rgb(40, 40, 40);
+        padding: 5px;
+        width: 600px;
+        }
+        select:focus{ outline: none;}
+
+        .caja::after{
+            content:"\025be";
+            display:table-cell;
+            padding-top:7px;
+            text-align:center;
+            width:30px;
+            height:30px;
+            background-color:#d9d9d9;
+            position:absolute;
+            top:0;
+            right:0px;	
+            pointer-events: none;
+        }
     </style>
 </head>
-<body>
+<body style="background-color: rgb(40, 40, 40);">
     <div class="container-fluid m-2">
         <div class="row">
             <div class="col-12">
-                <h1>Places Félix</h1>
+                <h1 style="color: white;">Places Félix</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-4">
+            <div class="col-4 caja">
                 <select name="tipo" id="tipo" class="form-control">
                     <option value="atm">Cajero automático</option>
                     <option value="dentist">Dentista</option>
@@ -43,11 +76,7 @@
         var markers = [];
         
         function iniciaMapa(){
-            if (navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(position => {
-                    var coordenadas = {  lat: position.coords.latitude, lng:  position.coords.longitude };
-                });
-            }            
+            var coordenadas = {  lat: 21.152639, lng:  -101.711598 };
             var propiedades = {
                 center: coordenadas,
                 zoom: 12
