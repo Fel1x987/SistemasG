@@ -1,208 +1,200 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>locate Friends</title>
-    <link rel="shortcut icon" type="image/jpg" href="./images/gato.jpg">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+    <title>Ubicar amigos</title>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
     <style>
         img {
-            width: 100%;
+            width: 80%;
         }
-        .logged-in, .logged-out{
-          display: none;
+
+        .logged-in, .logged-out {
+            display: none;
         }
-        h1, h3{
-          color: cyan;
-        }
+
         #map {
-          width: 100%;
-          height: 640px;
+            width: 100%;
+            height: 640px;
         }
     </style>
 </head>
-<body class="bg-dark">
-
-    <nav class="navbar navbar navbar-dark bg-dark navbar-expand-lg">
-      <a class="navbar-brand" href="#">Felix Y Asociados</a>        
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Amikos uwu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link logged-in" href="#" data-toggle="modal" data-target="#micuenta">Cuenta</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link logged-in"id="salir" href="#">Salir</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link logged-out" href="#" data-toggle="modal" data-target="#registrarmodal">Register</a>
-              </li>
-            </ul> 
-          </div>
-      </nav>
-  <!-- Modal INGRESAR -->
-<div class="modal fade" id="ingresarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div style="background-color:rgb(30, 30, 60);" class="modal-header">
-          <h5 style="color: white;" class="modal-title" id="exampleModalLabel">Ingresar</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div style="background-color:rgb(30, 30, 60);" class="modal-body">
-          <form id="formaingresar">
-            <div class="row">
-                <div class="col-12 m-2">
-                    <input type="email" required class="form-control" placeholder="Ingresa tu correo" id="correo">
-                </div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#micuentamodal">Mi Cuenta</a>
+            <a class="nav-item nav-link logged-in" href="#" id="salir">Salir</a>
+            <a class="nav-item nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
+            <a class="nav-item nav-link logged-out" href="#" data-toggle="modal" data-target="#registratemodal">Regístrate</a>
             </div>
-            <div class="row">
-                <div class="col-12 m-2">
-                    <input type="password" required class="form-control" placeholder="Ingresa tu contraseña" id="contrasena">
-                </div>
+        </div>
+    </nav>
+
+    <!-- Modal Ingresar -->
+    <div class="modal fade" id="ingresarmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="ingresarModalLabel">Ingresar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form id="formaingresar">
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <input type="email" class="form-control" required id="correo" placeholder="Ingrese su correo electrónico">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <input type="password" class="form-control" required id="contrasena" placeholder="Ingrese su contraseña">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <input type="submit" class="btn btn-primary" value="Ingresar">
+                            <p class="error text-danger"></p>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary">Ingresar</button>
-                    <p class="error text-danger"></p>
+                    <span onclick="entrarGoogle()" class="btn btn-primary btn-danger">Continuar con Gmail <i class="fas fa-plus"></i></span>
                 </div>
             </div>
-          </form>
-          <div class="row">
-            <div class="col-12 text-center">
-              <span onclick="entrarGoogle()" class="btn btn-danger">Ingresa con Gmail!</span>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
-          </div>
         </div>
-        <div style="background-color:rgb(30, 30, 60);" class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
         </div>
-      </div>
     </div>
-  </div>
-
-  <!-- Modal Regiser -->
-<div class="modal fade" id="registrarmodal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div style="background-color:rgb(30, 30, 60);" class="modal-header">
-          <h5 style="color: white;" class="modal-title" id="exampleModalLabel">Registrar</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <!-- Modal Registrate -->
+    <div class="modal fade" id="registratemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="registrateModalLabel">Regístrate</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form id="formaregistrate" autocomplete="off">
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="rnombre" required placeholder="Ingrese su nombre completo">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <input type="email" class="form-control" id="rcorreo" required placeholder="Ingrese su correo electrónico">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="rcontrasena" required placeholder="Ingrese su contraseña">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <input type="number" step="any" class="form-control" id="rtelefono" required placeholder="Ingrese su teléfono">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="rdireccion" required placeholder="Ingrese su dirección">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <input type="submit" class="btn btn-primary">
+                            <p class="error text-danger"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
         </div>
-        <div style="background-color:rgb(30, 30, 60);" class="modal-body">
-          <form id="formaregistrar">
-            <div class="row">
-              <div class="col-12 m-2">
-                  <input type="text" required class="form-control" placeholder="Ingresa tu nombre" id="rnombre">
-              </div>
-          </div>
-            <div class="row">
-                <div class="col-12 m-2">
-                    <input type="email" required class="form-control" placeholder="Ingresa tu correo" id="rcorreo">
+        </div>
+    </div>
+
+    <!-- Modal MiCuenta -->
+    <div class="modal fade" id="micuentamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="micuentaModalLabel">Mi Cuenta</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="row m-2">
+                    <div class="col-12 datosdelacuenta" >
+                        Aquí va la info de su cuenta
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 m-2">
-                    <input type="password" required class="form-control" placeholder="Ingresa tu contraseña" id="rcontrasena">
-                </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
-            <div class="row">
-              <div class="col-12 m-2">
-                  <input type="number" required class="form-control" placeholder="Ingresa tu numero" step="any" id="rtelefono">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 m-2">
-                  <input type="text" required class="form-control" placeholder="Ingresa tu direccion" id="rdireccion">
-              </div>
-          </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <input type="submit" value="Registrarse" class="btn btn-primary"></input>                    
-                    <p class="error text-danger"></p>
-                </div>
-            </div>
-          </form>
         </div>
-        <div style="background-color:rgb(30, 30, 60);" class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
         </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Modal MyAccount -->
-<div class="modal fade"  id="micuenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div style="background-color:rgb(30, 30, 60);" class="modal-content">
-        <div style="background-color:rgb(30, 30, 60);" class="modal-header">
-          <h5 class="modal-title" style="color: white;" id="exampleModalLabel">Cuenta</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+    <div class="container">
+        <div class="row text-center" id="listadeplatillos">
         </div>
-        <div class="modal-body">
-          <div style="background-color:rgb(37, 40, 80);" class="modal-body datosdelacuenta"></div>
-        </div>
-        <div style="background-color:rgb(30, 30, 60);" class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
-        </div>
-      </div>
     </div>
-  </div>
 
-  <div class="container my-5">
-      <h2 style="color: white;" ></h2>
-      <div class="row text-center" id="listadeplatillos">
-          
-      </div>
-  </div>
-
-  <div class="container logged-in">    
-    <div class="row text-center" id="map">
-      
+    <div class="container logged-in">
+        <div class="row text-center" id="map">
+        </div>
     </div>
-</div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>   
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
     apiKey: "AIzaSyCLBDwtPURJSmSslyH-YcbARsK6bwTksEM",
     authDomain: "auth-sistemas-geo.firebaseapp.com",
     projectId: "auth-sistemas-geo",
     storageBucket: "auth-sistemas-geo.appspot.com",
     messagingSenderId: "551182814801",
     appId: "1:551182814801:web:53525aa410071769587270"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-  const auth = firebase.auth();
-  const db = firebase.firestore();
-
-</script>
-<script src="scripts/autorizacion.js" ></script>
-<script src="scripts/index.js" ></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU" async defer></script>
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    </script>
+    <script src="scripts/autorizacion.js"></script>
+    <script src="scripts/index.js"></script>    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU" async defer></script>
 </body>
 </html>
