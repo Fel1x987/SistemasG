@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Localizar amigos</title>
+    <title>AMIGOS</title>
 
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
@@ -19,7 +19,7 @@
         }
 
         body{
-            background-color: rgb(60, 60, 60);
+            background-image: linear-gradient(135deg, #ff9336 0, #fd7e2d 25%, #f26322 50%, #e6451a 75%, #dd221a 100%);
         }
 
         .logged-in, .logged-out {
@@ -34,7 +34,7 @@
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Amikos</a>
+        <a class="navbar-brand" href="#">Amigos</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -168,13 +168,12 @@
     </div>
 
     <div class="container">
-        <h1 style="color: black;" class="text-center my-5">Profe, por mas que intente, nunca me jalo esto, me da un errir que dice "cannot read latitude of undefined, probe con su codigo y es igual, me rendí.</h1>
         <div class="row text-center" id="listadeplatillos">
         </div>
     </div>
 
     <div class="container logged-in">
-        <h1 style="color: black;" class="text-center my-5">Profe, por mas que intente, nunca me jalo esto, me da un errir que dice "cannot read latitude of undefined, probe con su codigo y es igual, me rendí.</h1>
+        <h1 class="text-center my-5">MAPA AMIGOS</h1>
         <div class="row text-center" id="map">
         </div>
     </div>
@@ -184,32 +183,28 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-    
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
     <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-            apiKey: "AIzaSyCLBDwtPURJSmSslyH-YcbARsK6bwTksEM",
-            authDomain: "auth-sistemas-geo.firebaseapp.com",
-            projectId: "auth-sistemas-geo",
-            storageBucket: "auth-sistemas-geo.appspot.com",
-            messagingSenderId: "551182814801",
-            appId: "1:551182814801:web:f4697e06c63803c9587270"
+        apiKey: "AIzaSyCLBDwtPURJSmSslyH-YcbARsK6bwTksEM",
+        authDomain: "auth-sistemas-geo.firebaseapp.com",
+        projectId: "auth-sistemas-geo",
+        storageBucket: "auth-sistemas-geo.appspot.com",
+        messagingSenderId: "551182814801",
+        appId: "1:551182814801:web:53525aa410071769587270"
     };
-  // Initialize Firebase
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
     const auth = firebase.auth();
+
     const db = firebase.firestore();
-</script> 
+
+    </script>
 
     <script src="scripts/autorizacion.js"></script>
     <script src="scripts/index.js"></script>
