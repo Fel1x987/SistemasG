@@ -28,8 +28,8 @@ const obtieneAmigos = (data) => {
 
     var propiedades = {
         center: {
-            lat: 21.152639,
-            lng: -101.711598
+            lat: 22.152639,
+            lng: -100.711598
         },
         zoom: 14
     }
