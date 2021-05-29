@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMIGOS</title>
+    <title>Ubícate</title>
 
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
@@ -17,10 +17,7 @@
         img {
             width: 80%;
         }
-
-        body{
-            background-image: linear-gradient(135deg, #ff9336 0, #fd7e2d 25%, #f26322 50%, #e6451a 75%, #dd221a 100%);
-        }
+        
 
         .logged-in, .logged-out {
             display: none;
@@ -156,7 +153,7 @@
             <div class="modal-body">
                 <div class="row m-2">
                     <div class="col-12 datosdelacuenta" >
-                        Aquí va la info de su cuenta
+   
                     </div>
                 </div>
             </div>
@@ -173,7 +170,7 @@
     </div>
 
     <div class="container logged-in">
-        <h1 class="text-center my-5">MAPA AMIGOS</h1>
+        <h1 class="text-center my-5">Mapa</h1>
         <div class="row text-center" id="map">
         </div>
     </div>
@@ -196,7 +193,7 @@
         storageBucket: "auth-sistemas-geo.appspot.com",
         messagingSenderId: "551182814801",
         appId: "1:551182814801:web:53525aa410071769587270"
-    };
+  };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
