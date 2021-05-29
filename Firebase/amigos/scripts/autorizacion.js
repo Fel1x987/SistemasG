@@ -1,9 +1,7 @@
 auth.onAuthStateChanged(user => {
-    if (user) {
-        console.log('Aquí estamos');
+    if (user) {        
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
-
                 db.collection('usuarios').doc(user.uid).update({
                     coordenadas: {
                         latitude: position.coords.latitude,
