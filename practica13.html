@@ -1,70 +1,57 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lanoticia.com%2Flos-mejores-memes-de-gatos%2F&psig=AOvVaw0HcRtIQBySiM914a5eSzJ-&ust=1622329732428000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiLza2_7fACFQAAAAAdAAAAABAD">
-    <title>Lugares cerca de ti</title>
+    <title>nearbySearch</title>
+
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <style>
-        html, body {
+        html,
+        body {
             margin: 0px;
             padding: 0px;
+            background-color: rgb(60, 60, 60);
         }
+
+        .lista{
+            color:white;
+        }
+
         #map {
             width: 100%;
-            height: 340px;
+            height: 540px;
         }
-        .caja {
-        margin:20px auto 40px auto;	
-        border:1px solid #d9d9d9;
-        height:30px;
-        overflow: hidden;
-        width: 500px;
-        position:relative;
-        }
-        select {
-        background: transparent;
-        border: none;
-        font-size: 14px;
-        height: 30px;
-        color: white;
-        background-color:  rgb(40, 40, 40);
-        padding: 5px;
-        width: 600px;
-        }
-        select:focus{ outline: none;}
 
-        .caja::after{
-            content:"\025be";
-            display:table-cell;
-            padding-top:7px;
-            text-align:center;
-            width:30px;
-            height:30px;
-            background-color:#d9d9d9;
-            position:absolute;
-            top:0;
-            right:0px;	
-            pointer-events: none;
+        h1 {
+            color: white;
         }
     </style>
 </head>
-<body style="background-color: rgb(40, 40, 40);">
-    <div class="container-fluid m-2">
+
+<body>
+
+    <div class="container-fluid my-4">
         <div class="row">
-            <div class="col-12">
-                <h1 style="color: white;">Places Félix</h1>
+            <div class="col-12 text-center">
+                <h1>Places por ubicación</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-4 caja">
+            <div class="col-4">
                 <select name="tipo" id="tipo" class="form-control">
-                    <option value="atm">Cajero automático</option>
+                    <option value="restaurant">Restaurante</option>
+                    <option value="bar">Bar</option>
                     <option value="dentist">Dentista</option>
+                    <option value="park">Park</option>
+                    <option value="mall">Plaza</option>
                     <option value="clothing_store">Boutique</option>
                     <option value="store">Tienda</option>
                 </select>
+
                 <ul id="placesList"></ul>
             </div>
             <div class="col-8">
@@ -72,87 +59,116 @@
             </div>
         </div>
     </div>
+
+
     <script>
         var map;
         var markers = [];
-        
-        function iniciaMapa(){
-            var coordenadas = {  lat: 21.152639, lng:  -101.711598 };
+
+        function iniciaMapa() {
+            var coordenadas = { lat: 21.152639, lng: -101.711598 };
+
             var propiedades = {
                 center: coordenadas,
                 zoom: 12
             };
-            map = new google.maps.Map(document.getElementById('map'),propiedades);
+
+            map = new google.maps.Map(document.getElementById('map'), propiedades);
             muestraLugares();
         }
 
         var tipo = document.getElementById('tipo');
         var valor;
 
-        tipo.addEventListener('change', function(){
+        tipo.addEventListener('change', function () {
+
             valor = this.options[tipo.selectedIndex].value;
             muestraLugares();
         });
 
-        function muestraLugares(){
-            if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition( posicion => {                
+        function muestraLugares() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(posicion => {
+
                     var coordenadas = {
                         lat: posicion.coords.latitude,
                         lng: posicion.coords.longitude
                     };
+
                     var service = new google.maps.places.PlacesService(map);
-                    service.nearbySearch({ location: coordenadas, radius: 4000, type: [valor]}, function( results, status, pagination){
-                        if(status !== 'OK') return;
-                        crearMarcadores(results);                    
+
+                    service.nearbySearch({ location: coordenadas, radius: 1000, type: [valor] }, function (results, status, pagination) {
+                        if (status !== 'OK') return;
+                        crearMarcadores(results);
                     });
                 });
             }
         }
-        function crearMarcadores(places){
+
+        function crearMarcadores(places) {
             var bounds = new google.maps.LatLngBounds();
             console.log(places);
             borraMarcadores();
-            for( var i=0, place ; place = places[i]; i ++ ){
+
+            for (var i = 0, place; place = places[i]; i++) {
                 var marker = new google.maps.Marker({
                     map: map,
-                    title: '<strong>' + place.name + '</strong>,' + place.vicinity ,
+                    title: '<strong>' + place.name + '</strong>,' + place.vicinity,
                     position: place.geometry.location
                 });
+
                 markers.push(marker);
-                google.maps.event.addListener(marker, 'mouseover', function(){
+
+                google.maps.event.addListener(marker, 'mouseover', function () {
+
                     var infowindow = new google.maps.InfoWindow({
-                        content : this.title,
-                        position : this.position
+                        content: this.title,
+                        position: this.position
                     });
+
                     infowindow.open(map);
-                    setTimeout( function(){ infowindow.close(); }, 3000);
+                    setTimeout(function () { infowindow.close(); }, 3000);
+
                 });
+
                 var li = document.createElement('li');
                 li.textContent = place.name;
+                li.className = "lista";
                 placesList.appendChild(li);
+
                 bounds.extend(place.geometry.location);
             };
+
             map.fitBounds(bounds);
         }
 
-        function borraMarcadores(){
-            for ( var i =0; i < markers.length; i++)
-            {
+        function borraMarcadores() {
+            for (var i = 0; i < markers.length; i++) {
                 markers[i].setMap(null);
             };
-            while( placesList.hasChildNodes()){
+
+            while (placesList.hasChildNodes()) {
                 placesList.removeChild(placesList.firstChild);
             }
         }
+
     </script>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa" async defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&libraries=places&callback=iniciaMapa"
+        async defer></script>
 
 </body>
+
 </html>

@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ubicar amigos</title>
+    <title>Localizar amigos</title>
 
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
@@ -18,6 +18,10 @@
             width: 80%;
         }
 
+        body{
+            background-color: rgb(60, 60, 60);
+        }
+
         .logged-in, .logged-out {
             display: none;
         }
@@ -29,8 +33,8 @@
     </style>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Amikos uwu</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Amikos</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,7 +53,7 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="ingresarModalLabel">Ingresar</h5>
+            <h5 class="modal-title" id="ingresarModalLabel">Ingresa</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -68,7 +72,7 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-12">
-                            <input type="submit" class="btn btn-primary" value="Ingresar">
+                            <input type="submit" class="btn btn-primary" value="Entrar">
                             <p class="error text-danger"></p>
                         </div>
                     </div>
@@ -76,7 +80,7 @@
             </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <span onclick="entrarGoogle()" class="btn btn-primary btn-danger">Continuar con Gmail <i class="fas fa-plus"></i></span>
+                    <span onclick="entrarGoogle()" class="btn btn-primary btn-danger">Gmail<i class="fas fa-plus"></i></span>
                 </div>
             </div>
             <div class="modal-footer">
@@ -85,6 +89,8 @@
         </div>
         </div>
     </div>
+
+
     <!-- Modal Registrate -->
     <div class="modal fade" id="registratemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -109,7 +115,7 @@
                     </div>
                     <div class="row m-2">
                         <div class="col-12">
-                            <input type="text" class="form-control" id="rcontrasena" required placeholder="Ingrese su contraseña">
+                            <input type="password" class="form-control" id="rcontrasena" required placeholder="Ingrese su contraseña">
                         </div>
                     </div>
                     <div class="row m-2">
@@ -124,7 +130,7 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-12">
-                            <input type="submit" class="btn btn-primary">
+                            <input type="submit" class="btn btn-primary" value="Registrate">
                             <p class="error text-danger"></p>
                         </div>
                     </div>
@@ -142,7 +148,7 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="micuentaModalLabel">Mi Cuenta</h5>
+            <h5 class="modal-title" id="micuentaModalLabel">Mi cuenta</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -167,9 +173,12 @@
     </div>
 
     <div class="container logged-in">
+        <h1 style="color: white;" class="text-center my-5">Amikos uwu</h1>
         <div class="row text-center" id="map">
         </div>
     </div>
+
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
@@ -190,11 +199,17 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
     const auth = firebase.auth();
+
     const db = firebase.firestore();
+
     </script>
+
     <script src="scripts/autorizacion.js"></script>
-    <script src="scripts/index.js"></script>    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU" async defer></script>
+    <script src="scripts/index.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3AeaFGSYUxlTyT2hNNEnu8uEuqWe3duU&callback=iniciaMapa" async defer></script>
+
 </body>
 </html>
