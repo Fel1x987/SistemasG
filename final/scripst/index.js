@@ -4,6 +4,7 @@ const listaloggedin = document.querySelectorAll('.logged-in');
 
 const configurarMenu = (user) => {
     if (user) {
+        cargarMapa();
         db.collection('usuarios').doc(user.uid).get().then(doc => {
             const html = `
             <p style="color: white;">Nombre: ${doc.data().nombre}</p>
@@ -24,6 +25,7 @@ const configurarMenu = (user) => {
 const listadeplatillos = document.getElementById('listadeplatillos');
 
 const obtienePlatillos = (data) => {
+    /*
     if (data.length) {
         let html = '';
         data.forEach(doc => {            
@@ -42,5 +44,5 @@ const obtienePlatillos = (data) => {
         listadeplatillos.innerHTML = html;
     } else {
         listadeplatillos.innerHTML= '<p style="color: white" class="text-center">Ingrese para ver los gatos uwu</p>';
-    }
+    }*/
 };
