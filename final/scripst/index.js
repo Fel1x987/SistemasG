@@ -25,11 +25,10 @@ const configurarMenu = (user) => {
 const listadeplatillos = document.getElementById('listadeplatillos');
 
 const obtienePlatillos = (data) => {
-    /*
     if (data.length) {
         let html = '';
         data.forEach(doc => {            
-            const platillo = doc.data();
+            /*const platillo = doc.data();
             const columna = `
             <div class="col-12 col-md-4">
                 <img src="images/${platillo.imagen}" alt="${platillo.nombre}">
@@ -39,10 +38,10 @@ const obtienePlatillos = (data) => {
                     <button class="btn btn-primary"> Pagar AHORA!</button>
                 </a>
             </div>`;
-            html += columna;
+            html += columna;*/
         });
-        listadeplatillos.innerHTML = html;
+        //listadeplatillos.innerHTML = html;
     } else {
-        listadeplatillos.innerHTML= '<p style="color: white" class="text-center">Ingrese para ver los gatos uwu</p>';
-    }*/
+        listadeplatillos.innerHTML= '<p style="color: white" class="text-center">Necesita logearse para ver los lugares</p>';
+    }
 };
