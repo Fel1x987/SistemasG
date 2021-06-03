@@ -4,8 +4,7 @@ const listaloggedin = document.querySelectorAll('.logged-in');
 
 const configurarMenu = (user) => {
     if (user) {
-        cargarMapa();
-        
+        cargarMapa();        
         db.collection('usuarios').doc(user.uid).get().then(doc => {
             const html = `
             <p style="color: white;">Nombre: ${doc.data().nombre}</p>
