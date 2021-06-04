@@ -9,8 +9,7 @@ const configuraMenu = (user) => {
                 <p>Nombre: ${ doc.data().nombre }</p>
                 <p>Correo: ${ user.email}</p>
                 <p>Teléfono: ${ doc.data().telefono }</p>
-                <p>Dirección: ${ doc.data().direccion }</p>
-                <p>Coordenadas: ${ doc.data().coordenadas.latitude } , ${ doc.data().coordenadas.longitude }</p>
+                <p>Dirección: ${ doc.data().direccion }</p>            
             `;
             datosdelacuenta.innerHTML = html;
         });
@@ -23,31 +22,6 @@ const configuraMenu = (user) => {
         listaloggedout.forEach(item => item.style.display = 'block');
     }
 }
-
-const obtieneAmigos = (data) => {
-
-    var propiedades = {
-        center: {
-            lat: 22.152639,
-            lng: -100.711598
-        },
-        zoom: 14
-    }
-
-    /*var mapa = document.getElementById("map")
-    var map = new google.maps.Map(mapa, propiedades);
-
-    data.forEach(doc => {
-        informacion = new google.maps.InfoWindow;
-        var pos = {
-            lat: doc.data().coordenadas.latitude,
-            lng: doc.data().coordenadas.longitude
-        };
-        informacion.setPosition(pos);
-        informacion.setContent(doc.data().nombre);
-        informacion.open(map);
-    });*/
-};
 
 const cargarMapa = () => {
     console.log("NO ENTRA")

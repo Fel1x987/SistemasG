@@ -1,42 +1,22 @@
 auth.onAuthStateChanged(user => {
     if (user) {
-        /*console.log('Aquí estamos');
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-
-                db.collection('usuarios').doc(user.uid).update({
-                    coordenadas: {
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude
-                    }
-                });
-            });
-        }*/
-
         db.collection('usuarios').onSnapshot(snapshot => {
-            cargarMapa();
-            obtieneAmigos(snapshot.docs);
+            cargarMapa();            
             configuraMenu(user);
         }, err => {
             console.log(err.message);
         });
     } else {
-        console.log('Usuario salió');
-        obtieneAmigos([]);
+        console.log('Usuario salió');        
         configuraMenu();
     }
-
 });
-
-
 const formaregistrate = document.getElementById('formaregistrate');
 
 formaregistrate.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const correo = formaregistrate['rcorreo'].value;
     const contrasena = formaregistrate['rcontrasena'].value;
-
     auth.createUserWithEmailAndPassword(correo, contrasena).then(cred => {
 
         return db.collection('usuarios').doc(cred.user.uid).set({
