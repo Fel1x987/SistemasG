@@ -103,7 +103,7 @@ const cargarMapa = () => {
                     const infowindow = new google.maps.InfoWindow({
                         content : informacion
                     })
-                    marcador.addListener("mousedown", ()=>{                        
+                    marcador.addListener("mouseenter", ()=>{                        
                         infowindow.open(map,marcador);
                 })
             })                                                             
