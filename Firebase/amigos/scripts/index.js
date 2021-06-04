@@ -25,7 +25,7 @@ const configuraMenu = (user) => {
 }
 
 const obtieneAmigos = (data) => {
-    
+
     var propiedades = {
         center: {
             lat: 21.152639,
@@ -33,20 +33,6 @@ const obtieneAmigos = (data) => {
         },
         zoom: 14
     }
-
-    //var mapa = document.getElementById("map")
-    //var map = new google.maps.Map(mapa, propiedades);
-
-    /*data.forEach(doc => {
-        informacion = new google.maps.InfoWindow;
-        var pos = {
-            lat: doc.data().coordenadas.latitude,
-            lng: doc.data().coordenadas.longitude
-        };
-        informacion.setPosition(pos);
-        informacion.setContent(doc.data().nombre);
-        informacion.open(map);
-    });*/
 };
 
 const cargarMapa = () => {
