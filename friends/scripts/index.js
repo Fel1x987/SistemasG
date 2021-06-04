@@ -36,7 +36,7 @@ const cargarMapa = () => {
                 center: {
                 lat: position.coords.latitude, lng: position.coords.longitude
                 },
-                zoom: 9
+                zoom: 3
                 };      
                 fetch('locations.json')
                     .then(function(response){
