@@ -1,7 +1,6 @@
 auth.onAuthStateChanged(user => {
-    if (user) {
-        console.log('Aquí estamos');
-        if (navigator.geolocation) {
+    if (user) {        
+        /*if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
 
                 db.collection('usuarios').doc(user.uid).update({
@@ -11,7 +10,7 @@ auth.onAuthStateChanged(user => {
                     }
                 });
             });
-        }
+        }*/
         cargarMapa();
         db.collection('usuarios').onSnapshot(snapshot => {
             obtieneAmigos(snapshot.docs);
@@ -19,14 +18,6 @@ auth.onAuthStateChanged(user => {
         }, err => {
             console.log(err.message);
         });
-
-        var name, email, photoUrl, uid, emailVerified;
-        name = user.displayName;
-        email = user.email;
-        photoUrl = user.photoURL;
-        emailVerified = user.emailVerified;
-        uid = user.uid;
-        console.log(name, email, photoUrl, emailVerified, uid);
     } else {
         console.log('Usuario salió');
         obtieneAmigos([]);

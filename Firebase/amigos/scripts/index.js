@@ -50,6 +50,7 @@ const obtieneAmigos = (data) => {
 };
 
 const cargarMapa = () => {
+    console.log("NO ENTRA")
     var informacion =  "<h2>Aquí comienza su aventura!</h2>";        
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(position => {
