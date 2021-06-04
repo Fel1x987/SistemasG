@@ -12,7 +12,7 @@ auth.onAuthStateChanged(user => {
                 });
             });
         }
-
+        cargarMapa();
         db.collection('usuarios').onSnapshot(snapshot => {
             obtieneAmigos(snapshot.docs);
             configuraMenu(user);

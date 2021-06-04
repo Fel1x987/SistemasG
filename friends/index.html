@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubícate</title>
-
+    <link rel="shortcut icon" type="image/jpg" href="./images/world.png">
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -170,8 +170,43 @@
     </div>
 
     <div class="container logged-in">
-        <h1 class="text-center my-5">Mapa</h1>
-        <div class="row text-center" id="map">
+        <div class="container-fluid">        
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div id="map"></div>  
+                </div>                             
+                <div class="col-12 col-md-6">
+                     <!--<h2>Destinos turisticos</h2>-->
+                     <div id="data"></div>                 
+                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="images/borabora.jpg" class="d-block w-100" alt="Bora Bora">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="images/zante.jpg" class="d-block w-100" alt="Zante">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="images/dagent.jpg" class="d-block w-100" alt="Anse source d’argent">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="images/white.jpg" class="d-block w-100" alt="Whithaven Beach">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="images/tulum.png" class="d-block w-100" alt="Tulum">
+                              </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                </div>
+            </div>
         </div>
     </div>
 
