@@ -27,6 +27,7 @@ const listadeplatillos = document.getElementById('listadeplatillos');
 const obtienePlatillos = (data) => {
     if (data.length) {
         let html = '';
+        console.log('HOLA')
         data.forEach(doc => {            
             /*const platillo = doc.data();
             const columna = `

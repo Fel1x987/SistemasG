@@ -38,138 +38,146 @@
     </style>
 </head>
 <body>
-  <nav class="navbar navbar navbar-dark bg-dark navbar-expand-lg">
-    <a class="navbar-brand" href="#">Felix Y Asociados</a>        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Amigos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#micuentamodal">Mi Cuenta</a>
+        <a class="nav-item nav-link logged-in" href="#" id="salir">Salir</a>
+        <a class="nav-item nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
+        <a class="nav-item nav-link logged-out" href="#" data-toggle="modal" data-target="#registratemodal">Regístrate</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Modal Ingresar -->
+<div class="modal fade" id="ingresarmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="ingresarModalLabel">Ingresa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link logged-in" href="#" data-toggle="modal" data-target="#micuenta">Cuenta</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link logged-in"id="salir" href="#">Salir</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link logged-out" href="#" data-toggle="modal" data-target="#registrarmodal">Register</a>
-            </li>
-          </ul> 
         </div>
-    </nav>
-<!-- Modal INGRESAR -->
-<div class="modal fade" id="ingresarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div style="background-color:rgb(30, 30, 60);" class="modal-header">
-        <h5 style="color: white;" class="modal-title" id="exampleModalLabel">Ingresar</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div style="background-color:rgb(30, 30, 60);" class="modal-body">
-        <form id="formaingresar">
-          <div class="row">
-              <div class="col-12 m-2">
-                  <input type="email" required class="form-control" placeholder="Ingresa tu correo" id="correo">
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-12 m-2">
-                  <input type="password" required class="form-control" placeholder="Ingresa tu contraseña" id="contrasena">
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-12 text-center">
-                  <button class="btn btn-primary">Ingresar</button>
-                  <p class="error text-danger"></p>
-              </div>
-          </div>
-        </form>
+        <div class="modal-body">
+            <form id="formaingresar">
+                <div class="row m-2">
+                    <div class="col-12">
+                        <input type="email" class="form-control" required id="correo" placeholder="Ingrese su correo electrónico">
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col-12">
+                        <input type="password" class="form-control" required id="contrasena" placeholder="Ingrese su contraseña">
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-12">
+                        <input type="submit" class="btn btn-primary" value="Entrar">
+                        <p class="error text-danger"></p>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="row">
-          <div class="col-12 text-center">
-            <span onclick="entrarGoogle()" class="btn btn-danger">Ingresa con Gmail!</span>
-          </div>
+            <div class="col-12 text-center">
+                <span onclick="entrarGoogle()" class="btn btn-primary btn-danger">Gmail<i class="fas fa-plus"></i></span>
+            </div>
         </div>
-      </div>
-      <div style="background-color:rgb(30, 30, 60);" class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
-      </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
     </div>
-  </div>
+    </div>
 </div>
 
-<!-- Modal Regiser -->
-<div class="modal fade" id="registrarmodal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+
+<!-- Modal Registrate -->
+<div class="modal fade" id="registratemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div style="background-color:rgb(30, 30, 60);" class="modal-header">
-        <h5 style="color: white;" class="modal-title" id="exampleModalLabel">Registrar</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div style="background-color:rgb(30, 30, 60);" class="modal-body">
-        <form id="formaregistrar">
-          <div class="row">
-            <div class="col-12 m-2">
-                <input type="text" required class="form-control" placeholder="Ingresa tu nombre" id="rnombre">
-            </div>
+        <div class="modal-header">
+        <h5 class="modal-title" id="registrateModalLabel">Regístrate</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
         </div>
-          <div class="row">
-              <div class="col-12 m-2">
-                  <input type="email" required class="form-control" placeholder="Ingresa tu correo" id="rcorreo">
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-12 m-2">
-                  <input type="password" required class="form-control" placeholder="Ingresa tu contraseña" id="rcontrasena">
-              </div>
-          </div>
-          <div class="row">
-            <div class="col-12 m-2">
-                <input type="number" required class="form-control" placeholder="Ingresa tu numero" step="any" id="rtelefono">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 m-2">
-                <input type="text" required class="form-control" placeholder="Ingresa tu direccion" id="rdireccion">
-            </div>
+        <div class="modal-body">
+            <form id="formaregistrate" autocomplete="off">
+                <div class="row m-2">
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="rnombre" required placeholder="Ingrese su nombre completo">
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col-12">
+                        <input type="email" class="form-control" id="rcorreo" required placeholder="Ingrese su correo electrónico">
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col-12">
+                        <input type="password" class="form-control" id="rcontrasena" required placeholder="Ingrese su contraseña">
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col-12">
+                        <input type="number" step="any" class="form-control" id="rtelefono" required placeholder="Ingrese su teléfono">
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="rdireccion" required placeholder="Ingrese su dirección">
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-12">
+                        <input type="submit" class="btn btn-primary" value="Registrate">
+                        <p class="error text-danger"></p>
+                    </div>
+                </div>
+            </form>
         </div>
-          <div class="row">
-              <div class="col-12 text-center">
-                  <input type="submit" value="Registrarse" class="btn btn-primary"></input>                    
-                  <p class="error text-danger"></p>
-              </div>
-          </div>
-        </form>
-      </div>
-      <div style="background-color:rgb(30, 30, 60);" class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
-      </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
     </div>
-  </div>
+    </div>
 </div>
 
-<!-- Modal MyAccount -->
-<div class="modal fade"  id="micuenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div style="background-color:rgb(30, 30, 60);" class="modal-content">
-      <div style="background-color:rgb(30, 30, 60);" class="modal-header">
-        <h5 class="modal-title" style="color: white;" id="exampleModalLabel">Cuenta</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body">
-        <div style="background-color:rgb(37, 40, 80);" class="modal-body datosdelacuenta"></div>
-      </div>
-      <div style="background-color:rgb(30, 30, 60);" class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>          
-      </div>
+<!-- Modal MiCuenta -->
+<div class="modal fade" id="micuentamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="micuentaModalLabel">Mi cuenta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <div class="row m-2">
+                <div class="col-12 datosdelacuenta" >
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
     </div>
-  </div>
+    </div>
 </div>
 
-    <div class="container-fluid logged-in" id="listadeplatillos">        
+<div class="container">
+    <div class="row text-center" id="listadeplatillos">
+    </div>
+</div>
+
+    <div class="container-fluid logged-in">        
         <div class="row logged-in">
             <div class="col-12 col-md-6 logged-in">
                 <div id="map"></div>  
