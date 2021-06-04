@@ -6,10 +6,10 @@ const configuraMenu = (user) => {
     if (user) {
         db.collection('usuarios').doc(user.uid).get().then(doc => {
             const html = `
-                <p>Nombre: ${ doc.data().nombre }</p>
-                <p>Correo: ${ user.email}</p>
-                <p>Teléfono: ${ doc.data().telefono }</p>
-                <p>Dirección: ${ doc.data().direccion }</p>            
+                <p>Nombre: ${doc.data().nombre}</p>
+                <p>Correo: ${user.email}</p>
+                <p>Teléfono: ${doc.data().telefono}</p>
+                <p>Dirección: ${doc.data().direccion}</p>            
             `;
             datosdelacuenta.innerHTML = html;
         });
@@ -23,8 +23,7 @@ const configuraMenu = (user) => {
     }
 }
 
-const cargarMapa = () => {
-    console.log("NO ENTRA")
+const cargarMapa = () => {    
     var informacion =  "<h2>Aquí comienza su aventura!</h2>";        
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(position => {
@@ -104,7 +103,7 @@ const cargarMapa = () => {
                     const infowindow = new google.maps.InfoWindow({
                         content : informacion
                     })
-                    marcador.addListener("click", ()=>{                        
+                    marcador.addListener("mousedown", ()=>{                        
                         infowindow.open(map,marcador);
                 })
             })                                                             
