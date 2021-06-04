@@ -1,4 +1,5 @@
 auth.onAuthStateChanged(user => {
+    console.log(user);
     if (user) {
         db.collection('usuarios').onSnapshot(snapshot => {
             cargarMapa();            
@@ -43,8 +44,6 @@ salir.addEventListener('click', (e) => {
         alert("El usuario ha salido del sistema");
     });
 });
-
-
 function mensajeError(codigo) {
 
     let mensaje = '';
