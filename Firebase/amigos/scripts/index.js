@@ -25,7 +25,7 @@ const configuraMenu = (user) => {
 }
 
 const obtieneAmigos = (data) => {
-
+    
     var propiedades = {
         center: {
             lat: 21.152639,

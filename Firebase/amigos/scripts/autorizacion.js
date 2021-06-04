@@ -10,10 +10,10 @@ auth.onAuthStateChanged(user => {
                     }
                 });
             });
-        }*/
-        cargarMapa();
+        }*/        
         db.collection('usuarios').onSnapshot(snapshot => {
             obtieneAmigos(snapshot.docs);
+            cargarMapa();
             configuraMenu(user);
         }, err => {
             console.log(err.message);
