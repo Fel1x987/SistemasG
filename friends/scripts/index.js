@@ -21,9 +21,11 @@ const configuraMenu = (user) => {
         listaloggedin.forEach(item => item.style.display = 'none');
         listaloggedout.forEach(item => item.style.display = 'block');
     }
+    cerrar();
 }
 
 const cargarMapa = () => {    
+    cerrar();
     var strokecolorchange = '';
     var informacion =  "<h2>Aquí comienza su aventura!</h2>";        
         if(navigator.geolocation){

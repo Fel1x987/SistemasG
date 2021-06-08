@@ -33,7 +33,10 @@ formaregistrate.addEventListener('submit', (e) => {
         formaregistrate.querySelector('.error').innerHTML = mensajeError(err.code);
     });
 });
-
+function cerrar() {
+    $('#registratemodal').modal('hide');
+    $('#ingresarmodal').modal('hide');
+}
 const salir = document.getElementById('salir');
 
 salir.addEventListener('click', (e) => {
