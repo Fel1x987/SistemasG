@@ -39,22 +39,6 @@ const cargarMapa = () => {
                 zoom: 8
                 }; 
                 
-                let propiedadesMarcador = {
-                    position: posicion,
-                    map,
-                    title: "Marcardor"
-                }
-
-                const marcador = new google.maps.Marker(propiedadesMarcador);
-
-                map.setCenter(posicion)
-                const infowindow = new google.maps.InfoWindow({
-                    content : "<h2>Siga la línea</h2>"
-                })
-                marcador.addListener("click", ()=>{
-                    infowindow.open(map,marcador);
-                })
-                
                 fetch('locations.json')
                     .then(function(response){                        
                         response.json().then(function(municipios){                            
@@ -129,7 +113,21 @@ const cargarMapa = () => {
                         });
                     });                
                 var map = new google.maps.Map(document.getElementById("map"), propiedades);                 
-                
+                let propiedadesMarcador = {
+                    position: posicion,
+                    map,
+                    title: "Marcardor"
+                }
+
+                const marcador = new google.maps.Marker(propiedadesMarcador);
+
+                map.setCenter(posicion)
+                const infowindow = new google.maps.InfoWindow({
+                    content : "Aquí está usted, siga las líneas"
+                })
+                marcador.addListener("click", ()=>{
+                    infowindow.open(map,marcador);
+                })
 
 
 
