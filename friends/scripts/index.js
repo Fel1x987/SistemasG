@@ -96,14 +96,14 @@ const cargarMapa = () => {
                     });                
                 var map = new google.maps.Map(document.getElementById("map"), propiedades);                 
                 let propiedadesMarcador = {
-                    position: posicion,
+                    position: municipio.coordenadas,
                     map,
                     title: "Marcardor"
                     }
                     const marcador = new google.maps.Marker(propiedadesMarcador);
                     map.setCenter(posicion)
                     const infowindow = new google.maps.InfoWindow({
-                        content : informacion
+                        content : municipio.nombre
                     })
                     marcador.addListener("click", ()=>{                        
                     infowindow.open(map,marcador);
