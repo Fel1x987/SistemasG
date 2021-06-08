@@ -56,11 +56,10 @@ const cargarMapa = () => {
                                 var coordlines = [];
                                 coordlines.push(posicion);
                             municipios.forEach(municipio => {
-
-                                if (municipio.nombre == "Chichén Itzá"){
+                                if (municipio.habitantes == 6501552){
                                     strokecolorchange = '#FF0000'
                                 } else {
-                                    strokecolorchange = '#00FF00'
+                                    strokecolorchange = '#0000FF'
                                 }
                                 coordlines.push(municipio.coordenadas);
                                 var circle = new google.maps.Circle({
