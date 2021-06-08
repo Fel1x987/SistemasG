@@ -39,7 +39,7 @@ const cargarMapa = () => {
                 zoom: 5
                 };     
                 let propiedadesMarcador = {
-                    position: position,
+                    position: posicion,
                     map,
                     title: "Marcardor"
                     }
