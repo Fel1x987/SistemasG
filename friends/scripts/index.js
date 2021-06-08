@@ -83,7 +83,7 @@ const cargarMapa = () => {
                             console.log(coordlines);
                             var trazo = new google.maps.Polyline({
                                 path: coordlines,                              
-                                strokeColor: '#FF0000',
+                                strokeColor: strokecolorchange,
                                 strokeOpacity: 1,
                                 strokeWeight: 1,
                                 geodesic:false            
