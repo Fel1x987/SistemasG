@@ -43,5 +43,68 @@
             "lng":  -87.43000048975833
         },
         "habitantes": 1501551
+    },
+    {
+        "nombre": "Chichén Itzá",
+        "estado": "México",
+        "coordenadas": {
+            "lat": 20.684221933475307,
+            "lng": -88.56955851978884
+        },
+        "habitantes": 6501551
+    },
+    {
+        "nombre": "Coliseo de Roma",
+        "estado": "Italia",
+        "coordenadas": {
+            "lat": 41.8902501133161,
+            "lng": 12.491887574528358
+        },
+        "habitantes": 6501551
+    },
+    {
+        "nombre": "Cristo Redentor",
+        "estado": "Río de Janeiro",
+        "coordenadas": {
+            "lat": -22.952748993528562, 
+            "lng":  -43.210614246073035
+        },
+        "habitantes": 9501551
+    },
+    {
+        "nombre": "Muralla China",
+        "estado": "China",
+        "coordenadas": {
+            "lat": 40.431164519591626,
+            "lng":  116.57051437206735
+        },
+        "habitantes": 8501551
+    },
+    {
+        "nombre": "Machu Picchu",
+        "estado": "Perú",
+        "coordenadas": {
+            "lat": -13.162848676168151,
+            "lng":   -72.54535987022277
+        },
+        "habitantes": 701551
+    },
+    {
+        "nombre": "Petra",
+        "estado": "Jordania",
+        "coordenadas": {
+            "lat": 30.321727993589594, 
+            "lng":  35.479524182120926
+        },
+        "habitantes": 121551
+    },
+    {
+        "nombre": "Taj Mahal",
+        "estado": "India",
+        "coordenadas": {
+            "lat": 27.175526563521224, 
+            "lng": 78.04168085690293
+        },
+        "habitantes": 1201551
     }
 ]
