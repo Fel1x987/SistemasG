@@ -36,8 +36,25 @@ const cargarMapa = () => {
                 center: {
                 lat: position.coords.latitude, lng: position.coords.longitude
                 },
-                zoom: 5
+                zoom: 8
                 }; 
+                
+                let propiedadesMarcador = {
+                    position: posicion,
+                    map,
+                    title: "Marcardor"
+                }
+
+                const marcador = new google.maps.Marker(propiedadesMarcador);
+
+                map.setCenter(posicion)
+                const infowindow = new google.maps.InfoWindow({
+                    content : "<h2>Siga la línea</h2>"
+                })
+                marcador.addListener("click", ()=>{
+                    infowindow.open(map,marcador);
+                })
+                
                 fetch('locations.json')
                     .then(function(response){                        
                         response.json().then(function(municipios){                            
