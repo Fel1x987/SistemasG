@@ -24,6 +24,7 @@ const configuraMenu = (user) => {
 }
 
 const cargarMapa = () => {    
+    var strokecolorchange = '';
     var informacion =  "<h2>Aquí comienza su aventura!</h2>";        
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(position => {
@@ -38,10 +39,8 @@ const cargarMapa = () => {
                 zoom: 3
                 };      
                 fetch('locations.json')
-                    .then(function(response){
-                        //console.log(response);
-                        response.json().then(function(municipios){
-                            //console.log(municipios);
+                    .then(function(response){                        
+                        response.json().then(function(municipios){                            
                             var datos = document.getElementById("data");
                                 var html = `
                                 <table class="table table-dark table-striped">
@@ -57,9 +56,15 @@ const cargarMapa = () => {
                                 var coordlines = [];
                                 coordlines.push(posicion);
                             municipios.forEach(municipio => {
+
+                                if (municipio.nombre == "Chichén Itzá"){
+                                    strokecolorchange = '#FF0000'
+                                } else {
+                                    strokecolorchange = '#00FF00'
+                                }
                                 coordlines.push(municipio.coordenadas);
                                 var circle = new google.maps.Circle({
-                                strokeColor: '#FF0000',
+                                strokeColor: strokecolorchange,
                                 strokeOpacity: 0.5,
                                 strokeWeight: 2,
                                 fillColor: '#FF0000',
@@ -78,21 +83,19 @@ const cargarMapa = () => {
                             });
                             console.log(coordlines);
                             var trazo = new google.maps.Polyline({
-                                path: coordlines,
+                                path: coordlines,                              
                                 strokeColor: '#FF0000',
                                 strokeOpacity: 1,
                                 strokeWeight: 1,
-                                geodesic:true            
-                            });
-    
+                                geodesic:false            
+                            });    
                             trazo.setMap(map);
                             html += `</tbody>
                                     </table>`;
                             datos.innerHTML = html;                                         
                         });
                     });                
-                var map = new google.maps.Map(document.getElementById("map"), propiedades); 
-                //const map = new google.maps.Map(map,propiedades)                        
+                var map = new google.maps.Map(document.getElementById("map"), propiedades);                 
                 let propiedadesMarcador = {
                     position: posicion,
                     map,
@@ -104,7 +107,7 @@ const cargarMapa = () => {
                         content : informacion
                     })
                     marcador.addListener("mouseenter", ()=>{                        
-                        infowindow.open(map,marcador);
+                    infowindow.open(map,marcador);
                 })
             })                                                             
         }

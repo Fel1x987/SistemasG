@@ -12,6 +12,7 @@ auth.onAuthStateChanged(user => {
         configuraMenu();
     }
 });
+
 const formaregistrate = document.getElementById('formaregistrate');
 
 formaregistrate.addEventListener('submit', (e) => {
@@ -19,13 +20,11 @@ formaregistrate.addEventListener('submit', (e) => {
     const correo = formaregistrate['rcorreo'].value;
     const contrasena = formaregistrate['rcontrasena'].value;
     auth.createUserWithEmailAndPassword(correo, contrasena).then(cred => {
-
         return db.collection('usuarios').doc(cred.user.uid).set({
             nombre: formaregistrate['rnombre'].value,
             telefono: formaregistrate['rtelefono'].value,
             direccion: formaregistrate['rdireccion'].value
         });
-
     }).then(() => {
         $('#registratemodal').modal('hide');
         formaregistrate.reset();
@@ -34,7 +33,6 @@ formaregistrate.addEventListener('submit', (e) => {
         formaregistrate.querySelector('.error').innerHTML = mensajeError(err.code);
     });
 });
-
 
 const salir = document.getElementById('salir');
 
@@ -45,9 +43,7 @@ salir.addEventListener('click', (e) => {
     });
 });
 function mensajeError(codigo) {
-
     let mensaje = '';
-
     switch (codigo) {
         case 'auth/wrong-password':
             mensaje = 'Su contraseña no es correcta';
@@ -70,29 +66,22 @@ formaingresar.addEventListener('submit', (e) => {
     e.preventDefault();
     let correo = formaingresar['correo'].value;
     let contrasena = formaingresar['contrasena'].value;
-
     auth.signInWithEmailAndPassword(correo, contrasena).then(cred => {
-
         $('#ingresarmodal').modal('hide');
         formaingresar.reset();
         formaingresar.querySelector('.error').innerHTML = '';
     }).catch(err => {
-
         formaingresar.querySelector('.error').innerHTML = mensajeError(err.code);
         console.log(err);
     });
 });
 
-
 entrarGoogle = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function (result) {
-
         var token = result.credential.accessToken;
         console.log(token);
-
         var user = result.user;
-
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
 
@@ -104,7 +93,6 @@ entrarGoogle = () => {
                 });
             });
         }
-
         console.log(user);
         const html = `
                 <p style="color: white">Nombre: ${ user.displayName }</p>
@@ -112,13 +100,10 @@ entrarGoogle = () => {
                 <img src="${ user.photoURL }" width="50px">
             `;
         datosdelacuenta.innerHTML = html;
-
         $('#ingresarmodal').modal('hide');
         formaingresar.reset();
         formaingresar.querySelector('.error').innerHTML = '';
-
     }).catch(function (error) {
         console.log(error);
     });
-
 }
