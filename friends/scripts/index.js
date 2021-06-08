@@ -63,8 +63,10 @@ const cargarMapa = () => {
                                     }
                                     const marcador = new google.maps.Marker(propiedadesMarcador);
                                     map.setCenter(posicion)
-                                    var gg = `<h2>${municipio.nombre}</h2> <br>
-                                              <h4>${municipio.desc}</h4>`;
+                                    var gg = `<div class="div">
+                                            <h2>${municipio.nombre}</h2> <br>
+                                            <h6>${municipio.desc}</h6>
+                                            </div>`;
                                     const infowindow = new google.maps.InfoWindow({                                        
                                         content : gg                                
                                     })
