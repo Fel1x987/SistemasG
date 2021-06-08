@@ -47,7 +47,7 @@ const cargarMapa = () => {
                                 <table class="table table-dark table-striped">
                                 <thead>
                                     <tr>
-                                    <th scope="col">Ciudad</th>
+                                    <th scope="col">Nombre</th>
                                     <th scope="col">País</th>
                                     <th scope="col">Visitantes/año</th>                            
                                     </tr>
@@ -88,7 +88,7 @@ const cargarMapa = () => {
                                 fillOpacity: 0.35,
                                 map: map,
                                 center : municipio.coordenadas,
-                                radius : Math.sqrt(municipio.habitantes) * 40
+                                radius : Math.sqrt(municipio.habitantes) * 20
                                 });
                                 html += `
                                 <tr>
