@@ -56,7 +56,7 @@ const cargarMapa = () => {
                                 var coordlines = [];
                                 coordlines.push(posicion);
                             municipios.forEach(municipio => {
-                                if (municipio.habitantes == 6501552){
+                                if (municipio.habitantes){
                                     strokecolorchange = '#FF0000'
                                 } else {
                                     strokecolorchange = '#0000FF'
@@ -105,7 +105,7 @@ const cargarMapa = () => {
                     const infowindow = new google.maps.InfoWindow({
                         content : informacion
                     })
-                    marcador.addListener("mouseenter", ()=>{                        
+                    marcador.addListener("click", ()=>{                        
                     infowindow.open(map,marcador);
                 })
             })                                                             
