@@ -107,8 +107,8 @@ entrarGoogle = () => {
 
         console.log(user);
         const html = `
-                <p>Nombre: ${ user.displayName }</p>
-                <p>Correo: ${ user.email}</p>
+                <p style="color: white">Nombre: ${ user.displayName }</p>
+                <p style="color: white">Correo: ${ user.email}</p>
                 <img src="${ user.photoURL }" width="50px">
             `;
         datosdelacuenta.innerHTML = html;

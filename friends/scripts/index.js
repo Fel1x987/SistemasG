@@ -6,10 +6,10 @@ const configuraMenu = (user) => {
     if (user) {
         db.collection('usuarios').doc(user.uid).get().then(doc => {
             const html = `
-                <p>Nombre: ${doc.data().nombre}</p>
-                <p>Correo: ${user.email}</p>
-                <p>Teléfono: ${doc.data().telefono}</p>
-                <p>Dirección: ${doc.data().direccion}</p>            
+                <p style="color: white">Nombre: ${doc.data().nombre}</p>
+                <p style="color: white">Correo: ${user.email}</p>
+                <p style="color: white">Teléfono: ${doc.data().telefono}</p>
+                <p style="color: white">Dirección: ${doc.data().direccion}</p>            
             `;
             datosdelacuenta.innerHTML = html;
         });
